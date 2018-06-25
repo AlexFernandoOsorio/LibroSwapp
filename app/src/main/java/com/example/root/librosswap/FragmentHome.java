@@ -3,6 +3,7 @@ package com.example.root.librosswap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.Toolbar;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,7 +47,11 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends BaseVolleyFragment {
+    //Clase que guarda el usuario logueado
+    SharedPrefUsuarios sesionuser;
+    HashMap<String, String> user;
 
+    Dialog dialogsubida;
     AlertDialog alertDialogBuilder;
     AlertDialog getAlertDialogBuilderlibro;
     private RadioButton radiotit;
@@ -64,8 +70,20 @@ public class FragmentHome extends BaseVolleyFragment {
     private int PICK_IMAGE_REQUEST = 1;
     private Bitmap bitmap;
     String uripath;
-    String extension;
 
+    //String para insertar
+    String titulols;
+    String autordils;
+    String lbsmls;
+    String edicionls;
+    String aniopublils;
+    String editorialls;
+    String descripls;
+    String ubicacionls;
+    String categorials;
+    String estadolibrols;
+    //variables de imagen
+    String extension;
     private String filename;
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
@@ -83,6 +101,9 @@ public class FragmentHome extends BaseVolleyFragment {
         toolbar.setTitle("Inicio");
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_fragment_home, container, false);
+
+        sesionuser =new SharedPrefUsuarios(getContext());
+        user = sesionuser.getUserDetails();
 
         //Casteo de  imagenes de categoria
         TextView cat1=v.findViewById(R.id.imagetext1);
@@ -197,8 +218,21 @@ public class FragmentHome extends BaseVolleyFragment {
                 btnagregar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //String a=getStringImage(bitmap);
-                        Toast.makeText(getContext(),filename, Toast.LENGTH_LONG).show();
+
+                        titulols=titulol.getText().toString();
+                        autordils=autordil.getText().toString();
+                        lbsmls=lbsml.getText().toString();
+                        edicionls=edicionl.getText().toString();
+                        aniopublils=aniopublil.getText().toString();
+                        editorialls=editoriall.getText().toString();
+                        descripls=descripl.getText().toString();
+                        ubicacionls=ubicacionl.getText().toString();
+
+                        categorials=Integer.toString(posicioncategoria+2);
+                        estadolibrols=Integer.toString(posicionestado+1);
+                        uploadSelectedImageToServer();
+
+                        //Toast.makeText(getContext(),filename, Toast.LENGTH_LONG).show();
 
                     }
                 });
@@ -446,7 +480,6 @@ public class FragmentHome extends BaseVolleyFragment {
                     //Asignar la imagen del filepath a un bitmap para luego insertarlo en un imageview
                     bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectimage);
                     encodedString=getStringImage(bitmap);
-                    uploadSelectedImageToServer();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }}
@@ -458,43 +491,51 @@ public class FragmentHome extends BaseVolleyFragment {
     }
     public void uploadSelectedImageToServer()
     {
-        StringRequest stringPostRequest = new StringRequest(Request.Method.POST, Constantes.ServerPathImages, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getContext(), response.toString(), Toast.LENGTH_LONG).show();
-                GsonBuilder builder = new GsonBuilder();
-                Gson gson = builder.create();
-                imageObject = gson.fromJson(response, ServerImageObject.class);
-                if (null == imageObject) {
-                    Toast.makeText(getContext(), "Something went wrong and file was not uploaded in the server", Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    if (imageObject.getSuccess().equals("0")) {
-                        // something went wrong
-                        Toast.makeText(getContext(), "Something went wrong and file was not uploaded in the server", Toast.LENGTH_LONG).show();
-                        return;
-                    } else {
-
-                        Toast.makeText(getContext(), "Your image was successfully uploaded to the server", Toast.LENGTH_LONG).show();
+        dialogsubida = new Dialog(getContext());
+        dialogsubida.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogsubida.setContentView(R.layout.dialog_loading);
+        dialogsubida.show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.InsertLibros,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        dialogsubida.dismiss();
+                        Toast.makeText(getContext(), s , Toast.LENGTH_LONG).show();
                     }
-                }
-            }
-        },
+                },
                 new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                    public void onErrorResponse(VolleyError volleyError) {
+                        dialogsubida.dismiss();
+                        Toast.makeText(getContext(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
-                }) {
+                }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new Hashtable<String, String>();
-                params.put("image_string", encodedString);
-                params.put("filename", filename);
+                Map<String,String> params = new Hashtable<String, String>();
+                if(bitmap != null){
+                    String image = getStringImage(bitmap);
+                    params.put("image_data", image);
+                }
+                else {
+                    filename="librodesconocido.jpeg";
+                }
+                params.put("image_tag",filename);
+                params.put("codUsuario",user.get(SharedPrefUsuarios.KEY_CODUSUER).toString());
+                params.put("idISBN",lbsmls);
+                params.put("titulo",titulols);
+                params.put("autor",autordils);
+                params.put("edicion",edicionls);
+                params.put("anoPublicacion",aniopublils);
+                params.put("editorial",editorialls);
+                params.put("descripcion",descripls);
+                params.put("estadoLibro",estadolibrols);
+                params.put("ubicacion",ubicacionls);
+
                 return params;
             }
         };
-        addToQueue(stringPostRequest);
+        addToQueue(stringRequest);
     }
     public String getStringImage(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

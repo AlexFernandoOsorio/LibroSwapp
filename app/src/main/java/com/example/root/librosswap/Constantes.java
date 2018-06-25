@@ -19,6 +19,9 @@ public class Constantes {
     public static final String GetLibrosAutor = ServerPath+"obtener_libros_id.php?libroAutor=";
     public static final String GetLibrosID = ServerPath+"obtener_libros_id.php?idLibro=";
 
+    public static final String InsertLibros = ServerPath+"insertar_libros.php";
+
+
     //Direcciones de lso servicios Rest para categorias
     public static final String GetCatall = ServerPath+"obtener_categorias.php";
 

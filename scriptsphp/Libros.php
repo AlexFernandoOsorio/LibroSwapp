@@ -195,17 +195,17 @@ class Libros
     }
 
     public static function insert(
-            $li_codUsuario,
-            $li_idLSBM,
-            $li_titulo,
-            $li_autor,
-            $li_edicion,
-            $li_añoPublica,
-            $li_editorial,
-            $li_portada,
-            $li_descripcion,
-            $li_estadoLibro,
-            $li_ubicacion
+            $codUsuario,
+            $idLSBM,
+            $titulo,
+            $autor,
+            $edicion,
+            $añoPublica,
+            $editorial,
+            $portada,
+            $descripcion,
+            $estadoLibro,
+            $ubicacion
     )
     {
         // Sentencia INSERT
@@ -215,7 +215,7 @@ class Libros
             "li_titulo," .
             "li_autor," .
             "li_edicion," .
-            "li_añoPublica," .
+            "li_añoPublicacion," .
             "li_editorial," .
             "li_portada," .
             "li_descripcion," .
@@ -228,17 +228,17 @@ class Libros
 
         return $sentencia->execute(array
             (
-            $li_codUsuario,
-            $li_idLSBM,
-            $li_titulo,
-            $li_autor,
-            $li_edicion,
-            $li_añoPublica,
-            $li_editorial,
-            $li_portada,
-            $li_descripcion,
-            $li_estadoLibro,
-            $li_ubicacion));
+            $codUsuario,
+            $idLSBM,
+            $titulo,
+            $autor,
+            $edicion,
+            $añoPublica,
+            $editorial,
+            $portada,
+            $descripcion,
+            $estadoLibro,
+            $ubicacion));
     }
 
     /**

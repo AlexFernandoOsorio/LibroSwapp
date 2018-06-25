@@ -3,84 +3,76 @@
 
 require 'Libros.php';
  
- //this is our upload folder 
- $upload_path = 'UploadImages/';
- //Getting the server ip 
- //$server_ip = gethostbyname(gethostname());
- //creating the upload url 
 
- $upload_url = 'http://libroservice.proyectosdetesis.com/AndroidImages/UploadImages/'.$upload_path; 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
+ 	/*
+ 							idLibros
+                            codUsuario
+                            idISBN
+                            titulo
+                            autor
+                            edicion
+                            anoPublicacio
+                            editorial
+                            portada
+                            descripcion
+                            estadoLibro
+                            ubicacion
+     */
+    $codUsuario= $_POST['codUsuario'];
+    $idISBN= $_POST['idISBN'];
+    $titulo= $_POST['titulo'];
+    $autor= $_POST['autor'];
+    $edicion= $_POST['edicion'];
+    $anoPublicacion= $_POST['anoPublicacion'];
+    $editorial= $_POST['editorial'];
+    //$portada= $_POST['portada'];
+    $descripcion= $_POST['descripcion'];
+    $estadoLibro= $_POST['estadoLibro'];
+    $ubicacion= $_POST['ubicacion'];
+
+    $ImageData = $_POST['image_data'];
+ 	$ImageName = $_POST['image_tag'];
+
+    //sentencias para insertar imagen al path del servidor
+    $ImagePath = "/home/pydt/libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/$ImageName";
+    $portada = "https://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/$ImageName";
+ 	$ServerURL = "https://libroservice.proyectosdetesis.com/AndroidImages/$ImagePath";
+	$success=file_put_contents($ImagePath,base64_decode($ImageData));
+
+	//sentencias para insertar el libro
+    $retorno = Libros::insert(
+		            $codUsuario,
+		            $idISBN,
+		            $titulo,
+		            $autor,
+		            $edicion,
+		            $anoPublicacion,
+		            $editorial,
+		            $portada,
+		            $descripcion,
+		            $estadoLibro,
+		            $ubicacion);
+
+    if ($retorno) {
+        // Código de éxito
+        print json_encode(
+            array(
+                'estado' => '1',
+                'mensaje' => 'Creación exitosa')
+        );
+    } else {
+        // Código de falla
+        print json_encode(
+            array(
+                'estado' => '2',
+                'mensaje' => 'Creación fallida')
+        );
+    }
  
- //response array 
- $response = array(); 
  
- 
- if($_SERVER['REQUEST_METHOD']=='POST'){
- 
-	 //checking the required parameters from the request 
-	 if(isset($_POST['name']) and isset($_FILES['image']['name'])){
-	 
-	 //connecting to the database 
-	 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect...');
-	 
-	 //getting name from the request 
-	 $name = $_POST['name'];
-	 
-	 //getting file info from the request 
-	 $fileinfo = pathinfo($_FILES['image']['name']);
-	 
-	 //getting the file extension 
-	 $extension = $fileinfo['extension'];
-	 
-	 //file url to store in the database 
-	 $file_url = $upload_url . getFileName() . '.' . $extension;
-	 
-	 //file path to upload in the server 
-	 $file_path = $upload_path . getFileName() . '.'. $extension; 
-	 
-	 //trying to save the file in the directory 
-	 try{
-	 //saving the file 
-	 move_uploaded_file($_FILES['image']['tmp_name'],$file_path);
-	 $sql = "INSERT INTO `db_images`.`images` (`id`, `url`, `name`) VALUES (NULL, '$file_url', '$name');";
-	 
-	 //adding the path and name to database 
-	 if(mysqli_query($con,$sql)){
-	 
-	 //filling response array with values 
-	 $response['error'] = false; 
-	 $response['url'] = $file_url; 
-	 $response['name'] = $name;
-	 }
-	 //if some error occurred 
-	 }catch(Exception $e){
-	 $response['error']=true;
-	 $response['message']=$e->getMessage();
-	 } 
-	 //displaying the response 
-	 echo json_encode($response);
-	 
-	 //closing the connection 
-	 mysqli_close($con);
-	 }else{
-	 $response['error']=true;
-	 $response['message']='Please choose a file';
-	 }
-	 }
-	 
-	 /*
-	 We are generating the file name 
-	 so this method will return a file name for the image to be upload 
-	 */
-	 function getFileName(){
-	 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect...');
-	 $sql = "SELECT max(id) as id FROM images";
-	 $result = mysqli_fetch_array(mysqli_query($con,$sql));
-	 
-	 mysqli_close($con);
-	 if($result['id']==null)
-	 return 1; 
-	 else 
-	 return ++$result['id']; 
+
 
 }

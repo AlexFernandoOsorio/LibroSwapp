@@ -143,7 +143,8 @@ public class NavigLibros extends BaseVolleyActivity
         } else if (id == R.id.menu_sesion) {
             setFragmentn(3);
         } else if (id == R.id.menu_listarli) {
-
+            sesionuser.logoutUser();
+            finish();
         } else if (id == R.id.menu_categoria) {
 
         }

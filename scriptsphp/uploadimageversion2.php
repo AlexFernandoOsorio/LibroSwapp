@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
  
  $ImageName = $_POST['image_tag'];
  
- $ImagePath = "/home/pydt/libroservice.proyectosdetesis.com/AndroidImages/UploadImages/$ImageName.jpg";
+ $ImagePath = "/home/pydt/libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/$ImageName.jpg";
  
  $ServerURL = "https://libroservice.proyectosdetesis.com/AndroidImages/$ImagePath";
  

@@ -56,7 +56,6 @@
                     android:textColorHint="@color/colorPrimary"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
                     android:drawableLeft="@drawable/ic_bookmark"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -80,7 +79,6 @@
                     android:textColorHint="@color/colorPrimary"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
                     android:drawableLeft="@drawable/ic_bookmark"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -175,7 +173,6 @@
                     android:textColorHint="@color/colorPrimary"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
                     android:drawableLeft="@drawable/ic_bookmark"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -271,7 +268,6 @@
                     android:textColorHint="@color/colorPrimary"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
                     android:drawableLeft="@drawable/ic_bookmark"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -295,7 +291,6 @@
                     android:textColorHint="@color/colorPrimary"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="number"
                     android:drawableLeft="@drawable/ic_bookmark"
                     android:maxLines="1"
                     android:singleLine="true" />

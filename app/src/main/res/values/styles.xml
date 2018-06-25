@@ -42,6 +42,10 @@
         <item name="colorAccent">#FFFFFF</item>
     </style>
 
+    <style name="Buttonlogin" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#e57373</item>
+        <item name="colorButtonNormal">@color/colorloginbox</item>
+    </style>
     <style name="ButtonCat" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">#e57373</item>
         <item name="colorButtonNormal">#7986CB</item>
