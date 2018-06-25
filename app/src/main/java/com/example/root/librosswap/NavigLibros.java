@@ -141,7 +141,7 @@ public class NavigLibros extends BaseVolleyActivity
         } else if (id == R.id.menu_libros) {
             setFragmentn(2);
         } else if (id == R.id.menu_sesion) {
-
+            setFragmentn(3);
         } else if (id == R.id.menu_listarli) {
 
         } else if (id == R.id.menu_categoria) {
@@ -160,6 +160,7 @@ public class NavigLibros extends BaseVolleyActivity
         FragmentHome Home = new FragmentHome();
         FragmentListarUsers Users=new FragmentListarUsers();
         FragmentListarLibros libros= new FragmentListarLibros();
+        FragmentListarCat categorias= new FragmentListarCat();
 
         switch (position) {
             case 0:
@@ -172,6 +173,10 @@ public class NavigLibros extends BaseVolleyActivity
                 break;
             case 2:
                 fragmentTransaction.replace(R.id.fragmenti, libros);
+                fragmentTransaction.commit();
+                break;
+            case 3:
+                fragmentTransaction.replace(R.id.fragmenti, categorias);
                 fragmentTransaction.commit();
                 break;
         }
