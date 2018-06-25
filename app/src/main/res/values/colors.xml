@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!--<color name="colorPrimary">#E43f3f</color>
+    <color name="colorPrimaryDark">#E12929</color>-->
+    <color name="colorAccent">#303F9F</color>
+    <color name="colordialog">#303F9F</color>
+    <color name="colortexthint">#303F9F</color>
+    <color name="colorbackground">#FFFFFF</color>
+    <color name="colorbackgroundlogin">#d0e3f5</color>
+    <color name="colorloginbox">#408ccf</color>
+    <color name="colorlogintext">#777d83</color>
+    <color name="colorbrown">#795548</color>
+    <color name="colorradiobn">#45494d</color>
+    <color name="colorradioba">#de23cb</color>
+    <color name="colorradiotext">#04b770</color>
+
+    <color name="colorbuttonregistro">#04b770</color>
+    <color name="colorbuttonrecupera">#efeb0a</color>
+    <color name="colordialogback">#45494d</color>
+    <color name="colordialogagrgarlibro">#7323b4</color>
+    <color name="colorwhite">#FFFFFF</color>
+    <color name="colorDividerColor">#B6B6B6</color>
+
+    <color name="colorimgtext1">#05897c</color>
+    <color name="colorimgtext2">#795548</color>
+    <color name="colorimgtext3">#E53935</color>
+    <color name="colorimgtext4">#1E88E5</color>
+    <color name="colorimgtext5">#D81B60</color>
+    <color name="colorimgtext6">#8E24AA</color>
+    <color name="colorimgtext7">#5E35B1</color>
+    <color name="colorimgtext8">#3949AB</color>
+    <color name="colorimgtext9">#546E7A</color>
+
+    <color name="colorcheckindigo">#8E24AA</color>
+    <color name="colorcheckverde">#1d8632</color>
+    <color name="colorcheckamarillo">#fff706</color>
+    <color name="colorcheckrojo">#f5052d</color>
+
+</resources>

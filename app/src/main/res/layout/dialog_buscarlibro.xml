@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorwhite">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colordialogback">
+        <ImageView
+            android:src="@drawable/ic_comment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="center"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar por :"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <RadioGroup
+                android:id="@+id/dialog_opciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/radio_tit"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:checked="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="Titulo :"
+                    android:theme="@style/MyRadioButton"/>
+                <RadioButton
+                    android:id="@+id/radio_aut"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:checked="false"
+                    android:text="Autor :"
+                    android:theme="@style/MyRadioButton"/>
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/etxt_dialogtit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="invisible"
+                />
+            <EditText
+                android:id="@+id/etxt_dialogaut"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:visibility="invisible"
+               />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_dialogbuss"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Salir"
+            android:textColor="@color/colorradiotext"
+            android:textStyle="bold"
+            android:background="@color/colorwhite"/>
+        <Button
+            android:id="@+id/btn_dialogbusb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Buscar"
+            android:textColor="@color/colorradiotext"
+            android:textStyle="bold"
+            android:background="@color/colorwhite"/>
+
+    </LinearLayout>
+
+</LinearLayout>

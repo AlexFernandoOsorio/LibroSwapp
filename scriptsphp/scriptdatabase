@@ -1,0 +1,112 @@
+
+
+CREATE TABLE IF NOT EXISTS `ls_Usuarios` (
+  `us_idUsuario` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria',
+  `us_dniUsuario` int(11) NOT NULL,
+  `us_codUsuario` varchar(11) NOT NULL,
+  `us_tipoUsuario` int(1) NOT NULL,
+  `us_nombres` varchar(100) NOT NULL,
+  `us_apellidos` varchar(100) NOT NULL,
+  `us_estadoUsuario` int(1) NOT NULL COMMENT '1 0 -1 suspensiones',
+  `us_correo` varchar(100) NOT NULL,
+  `us_skype` varchar(100) DEFAULT NULL,
+  `us_direccion` varchar(100) NOT NULL,
+  `us_contraseña` varchar(10) NOT NULL,
+  `us_edad` int(3) DEFAULT NULL,
+  `us_telefono` int(30) DEFAULT NULL,
+  `us_celular` int(30) NOT NULL,
+  `us_genero` varchar(2) NOT NULL,
+  `us_intereses` varchar(200) NOT NULL,
+
+  PRIMARY KEY (`us_idUsuario`),
+  UNIQUE KEY `us_dniusuario` (`us_dniusuario`),
+  UNIQUE KEY `us_codusuario` (`us_codUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `ls_Libros` (
+  `li_idLibros` int(11) NOT NULL AUTO_INCREMENT,
+  `li_codUsuario` varchar(11) NOT NULL,
+  `li_idISBN` varchar(20) NOT NULL,
+  `li_titulo` varchar(50) NOT NULL,
+  `li_autor` varchar(50) NOT NULL,
+  `li_edicion` varchar(20) NOT NULL,
+  `li_añoPublicacion` varchar(20) NOT NULL,
+  `li_editorial` varchar(100) DEFAULT NULL,
+  `li_portada` varchar(200) DEFAULT NULL,
+  `li_descripcion` varchar(150) DEFAULT NULL,
+  `li_estadoLibro` int(2) NOT NULL COMMENT '1 al 10',
+  `li_ubicacion` varchar(50) NOT NULL,
+
+  PRIMARY KEY (`li_idLibros`),
+  UNIQUE KEY `li_idISBN` (`li_idISBN`),
+  FOREIGN KEY (li_codUsuario) REFERENCES ls_Usuarios(us_codUsuario)        
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS `ls_Categorias` (
+  `cat_idCategoria` int(10) NOT NULL AUTO_INCREMENT,
+  `cat_nombreCategoria` varchar(50) NOT NULL,
+
+  PRIMARY KEY (`cat_idCategoria`),
+  UNIQUE KEY `cat_idCategoria` (`cat_idCategoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `ls_Librocategoria` (
+  `lc_idLibros` int(11) NOT NULL,
+  `lc_categoria1` int(10) NOT NULL,
+  `lc_categoria2` int(10) NOT NULL,
+
+  PRIMARY KEY (`lc_idLibros`),
+  FOREIGN KEY (lc_idLibros) REFERENCES ls_Libros(li_idLibros),
+  FOREIGN KEY (lc_categoria1) REFERENCES ls_Categorias(cat_idCategoria)     
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `ls_TipoPrestamo` (
+  `tpr_idTipoPrestamo` int(10) NOT NULL AUTO_INCREMENT,
+  `tpr_tipoPrestamo` varchar(20) NOT NULL,
+
+  PRIMARY KEY (`tpr_idTipoPrestamo`)       
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `ls_Prestamo` (
+  `pr_idPrestamo` int(11) NOT NULL AUTO_INCREMENT,
+  `pr_idLibro` int(11) NOT NULL,
+  `pr_idCodUsuarioEmisor` varchar(11) NOT NULL,
+  `pr_idCodUsuarioReceptor` varchar(11) NOT NULL,
+  `pr_tipoPrestamo` int(10) NOT NULL,
+
+  PRIMARY KEY (`pr_idPrestamo`),
+  FOREIGN KEY (pr_idLibro) REFERENCES ls_Libros(li_idLibros), 
+  FOREIGN KEY (pr_idCodUsuarioEmisor) REFERENCES ls_Usuarios(us_codUsuario),
+  FOREIGN KEY (pr_idCodUsuarioReceptor) REFERENCES ls_Usuarios(us_codUsuario),
+  FOREIGN KEY (pr_tipoPrestamo) REFERENCES ls_TipoPrestamo(tpr_idTipoPrestamo) 
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS `ls_PrestamoDetalle` (
+  `pd_idPrestamo` int(11) NOT NULL,
+  `pd_fechaPrestamo` int(11) NOT NULL,
+  `pd_fechaDevolucion` varchar(20) NOT NULL,
+  `pd_idpenalidad` int(10) NOT NULL,
+
+  PRIMARY KEY (`pd_idPrestamo`),
+  UNIQUE KEY `pd_idpenalidad` (`pd_idpenalidad`),
+  FOREIGN KEY (pd_idPrestamo) REFERENCES ls_Prestamo(pr_idPrestamo)        
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `ls_Penalidad` (
+  `pe_idPenalidad` int(10) NOT NULL AUTO_INCREMENT,
+  `pe_idEstado` int(2) NOT NULL COMMENT '1 si tiene penalidad,0 si no tiene',
+  `pe_descripcion` varchar(200) NOT NULL,
+  `pe_descargo` varchar(200) NOT NULL,
+
+  PRIMARY KEY (`pe_idPenalidad`),
+  FOREIGN KEY (pe_idPenalidad) REFERENCES ls_PrestamoDetalle(pd_idpenalidad)        
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+

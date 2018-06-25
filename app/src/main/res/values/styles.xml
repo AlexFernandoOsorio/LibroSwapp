@@ -1,0 +1,82 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorbackground</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Estilos agregados -->
+    <style name="styles_textimp" parent="Theme.AppCompat.Light">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorlogintext</item>
+        <item name="android:textSize">16sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">#FFFFFF</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
+
+    <style name="ButtonCat" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">#e57373</item>
+        <item name="colorButtonNormal">#7986CB</item>
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorradiobn</item>
+        <item name="colorControlActivated">@color/colorradioba</item>
+    </style>
+
+
+    <style name="MyCheckBoxv" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorcheckverde</item>
+        <item name="colorControlActivated">@color/colorcheckverde</item>
+    </style>
+    <style name="MyCheckBoxa" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorcheckamarillo</item>
+        <item name="colorControlActivated">@color/colorcheckamarillo</item>
+    </style>
+    <style name="MyCheckBoxr" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorcheckrojo</item>
+        <item name="colorControlActivated">@color/colorcheckrojo</item>
+    </style>
+
+    <style name="MBA" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorcheckindigo</item>
+        <item name="colorButtonNormal">@color/colorcheckverde</item>
+    </style>
+    <style name="MBM" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorcheckindigo</item>
+        <item name="colorButtonNormal">@color/colorcheckamarillo</item>
+    </style>
+    <style name="MBE" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorcheckindigo</item>
+        <item name="colorButtonNormal">@color/colorcheckrojo</item>
+    </style>
+
+</resources>
