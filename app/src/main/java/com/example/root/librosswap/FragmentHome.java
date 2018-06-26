@@ -32,14 +32,21 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 
@@ -47,6 +54,8 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends BaseVolleyFragment {
+
+    public List<CategoClass> listcategorias = new ArrayList<>();
     //Clase que guarda el usuario logueado
     SharedPrefUsuarios sesionuser;
     HashMap<String, String> user;
@@ -64,7 +73,7 @@ public class FragmentHome extends BaseVolleyFragment {
     Bundle bundleidcat;
     private int posicionestado;
     private int posicioncategoria;
-
+    String[][] arraycategoria;
     //variables para accedera storage
     EditText portadalil;
     private int PICK_IMAGE_REQUEST = 1;
@@ -176,6 +185,7 @@ public class FragmentHome extends BaseVolleyFragment {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ReceiveWSCategoriaLibros();
                 View Viewagregar = getLayoutInflater().inflate(R.layout.dialog_agregarlibros, null);
                 AlertDialog.Builder Builder = new AlertDialog.Builder(getContext());
                 final EditText titulol=Viewagregar.findViewById(R.id.diall_titulo);
@@ -191,11 +201,17 @@ public class FragmentHome extends BaseVolleyFragment {
 
                 Button btnagregar = (Button) Viewagregar.findViewById(R.id.btn_dialogbusb);
                 Button btnsalir = (Button) Viewagregar.findViewById(R.id.btn_dialogbuss);
-
+                /*
+                String[] arraycategoriai= new String[listcategorias.size()];
+                String[] arraycategorian= new String[listcategorias.size()];
+                for (int i = 0; i <= listcategorias.size(); i++) {
+                        arraycategoriai[i]=listcategorias.getClass()
+                }
+                */
+                String[] arraycategorian= {"1","2"};
                 //Inflar spinner de estado y categorai de los libros a agregar
                 Spinner spinnercategoria = Viewagregar.findViewById(R.id.spinnercategorialibro);
-                String[] arraycategoria = {"Categoria","Inteligencia"};
-                ArrayAdapter<String> adaptadorcat = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraycategoria);
+                ArrayAdapter<String> adaptadorcat = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraycategorian);
                 adaptadorcat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnercategoria.setAdapter(adaptadorcat);
                 posicioncategoria= spinnercategoria.getSelectedItemPosition();
@@ -489,6 +505,45 @@ public class FragmentHome extends BaseVolleyFragment {
 
         }
     }
+
+    public void ReceiveWSCategoriaLibros()
+    {
+        final String JsonURL = Constantes.GetCatall;
+        final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
+                new Response.Listener<JSONObject>() {
+
+                    // Takes the response from the JSON request
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonarray = response.getJSONArray("categorias");
+                            CategoClass categ;
+                            listcategorias.clear();
+                            for (int i = 0; i <= jsonarray.length(); i++) {
+                                JSONObject jsonObject = jsonarray.getJSONObject(i);
+                                String idcat=jsonObject.getString("cat_idCategoria");
+                                String nombrecat=jsonObject.getString("cat_nombreCategoria");
+                                categ=new CategoClass(idcat,nombrecat);
+                                listcategorias.add(categ);
+                            }
+                            //Toast.makeText(getContext(), arraycategoria[2][1].toString()+arraycategoria[2][2].toString(), Toast.LENGTH_SHORT).show();
+                        }
+                        catch (JSONException e) {
+                            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //onConnectionFailed(error.toString());
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+        );
+        addToQueue(obreq);
+    }
     public void uploadSelectedImageToServer()
     {
         dialogsubida = new Dialog(getContext());
@@ -531,6 +586,7 @@ public class FragmentHome extends BaseVolleyFragment {
                 params.put("descripcion",descripls);
                 params.put("estadoLibro",estadolibrols);
                 params.put("ubicacion",ubicacionls);
+                params.put("categoria",categorials);
 
                 return params;
             }

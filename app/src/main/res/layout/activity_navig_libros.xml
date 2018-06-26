@@ -19,6 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemIconTint="#07589b"
         app:headerLayout="@layout/nav_header_navig_libros"
         app:menu="@menu/activity_navig_libros_drawer" />
 

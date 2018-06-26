@@ -36,16 +36,18 @@ CREATE TABLE IF NOT EXISTS `ls_Libros` (
   `li_descripcion` varchar(150) DEFAULT NULL,
   `li_estadoLibro` int(2) NOT NULL COMMENT '1 al 10',
   `li_ubicacion` varchar(50) NOT NULL,
+  `li_categoriaLibro` int(5) NOT NULL COMMENT 'identificador',
 
   PRIMARY KEY (`li_idLibros`),
   UNIQUE KEY `li_idISBN` (`li_idISBN`),
-  FOREIGN KEY (li_codUsuario) REFERENCES ls_Usuarios(us_codUsuario)        
+  FOREIGN KEY (li_codUsuario) REFERENCES ls_Usuarios(us_codUsuario),    
+  FOREIGN KEY (li_categoriaLibro) REFERENCES ls_Categorias(cat_idCategoria)  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
 CREATE TABLE IF NOT EXISTS `ls_Categorias` (
-  `cat_idCategoria` int(10) NOT NULL AUTO_INCREMENT,
+  `cat_idCategoria` int(5) NOT NULL AUTO_INCREMENT,
   `cat_nombreCategoria` varchar(50) NOT NULL,
 
   PRIMARY KEY (`cat_idCategoria`),

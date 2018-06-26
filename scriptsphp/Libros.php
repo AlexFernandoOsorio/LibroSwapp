@@ -31,7 +31,8 @@ class Libros
                              li_portada,
                              li_descripcion,
                              li_estadoLibro,
-                             li_ubicacion
+                             li_ubicacion,
+                             li_categoriaLibro
                              FROM ls_Libros";
         try {
             // Preparar sentencia
@@ -67,7 +68,8 @@ class Libros
                             li_portada,
                             li_descripcion,
                             li_estadoLibro,
-                            li_ubicacion
+                            li_ubicacion,
+                            li_categoriaLibro
                              FROM ls_Libros
                              WHERE li_idLibros = ?";
 
@@ -101,10 +103,9 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            ls_Librocategoria.lc_categoria1
-                            FROM ls_Libros INNER JOIN ls_Librocategoria
-                            ON ls_Libros.li_idLibros = ls_Librocategoria.lc_idLibros 
-                            WHERE ls_Librocategoria.lc_categoria1 = ?";
+                            li_categoriaLibro
+                            FROM ls_Libros
+                            WHERE li_categoriaLibro = ?";
 
         try {
             // Preparar sentencia
@@ -137,10 +138,9 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            ls_Librocategoria.lc_categoria1
-                            FROM ls_Libros INNER JOIN ls_Librocategoria
-                            ON ls_Libros.li_idLibros = ls_Librocategoria.lc_idLibros 
-                            WHERE ls_Libros.li_titulo like ?";
+                            li_categoriaLibro
+                            FROM ls_Libros
+                            WHERE li_titulo like ?";
 
         try {
             // Preparar sentencia
@@ -174,9 +174,8 @@ class Libros
                             li_estadoLibro,
                             li_ubicacion,
                             ls_Librocategoria.lc_categoria1
-                            FROM ls_Libros INNER JOIN ls_Librocategoria
-                            ON ls_Libros.li_idLibros = ls_Librocategoria.lc_idLibros 
-                            WHERE ls_Libros.li_autor like ?";
+                            FROM ls_Libros
+                            WHERE li_autor like ?";
 
         try {
             // Preparar sentencia
@@ -205,7 +204,8 @@ class Libros
             $portada,
             $descripcion,
             $estadoLibro,
-            $ubicacion
+            $ubicacion,
+            $categoria
     )
     {
         // Sentencia INSERT
@@ -220,8 +220,9 @@ class Libros
             "li_portada," .
             "li_descripcion," .
             "li_estadoLibro," .
-            "li_ubicacion)" .
-            " VALUES( ?,?,?,?,?,?,?,?,?,?,?)";
+            "li_ubicacion," .
+            "li_categoriaLibro)" .
+            " VALUES( ?,?,?,?,?,?,?,?,?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
@@ -238,7 +239,8 @@ class Libros
             $portada,
             $descripcion,
             $estadoLibro,
-            $ubicacion));
+            $ubicacion,
+            $categoria));
     }
 
     /**

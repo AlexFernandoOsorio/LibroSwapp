@@ -6,42 +6,39 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_inicio"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_inicio"
             android:title="@string/menu_inicio" />
         <item
             android:id="@+id/menu_cuenta"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_account"
             android:title="@string/menu_cuenta" />
         <item
             android:id="@+id/menu_libros"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_book"
             android:title="@string/menu_libros" />
         <item
             android:id="@+id/menu_sesion"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_listarlibros" />
+            android:icon="@drawable/ic_menu_delete"
+            android:title="@string/menu_sesion" />
     </group>
 
     <item android:title="Administrador">
         <menu>
             <item
                 android:id="@+id/menu_listarli"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_sesion" />
+                android:icon="@drawable/ic_menu_list"
+                android:title="@string/menu_listarlibros" />
             <item
                 android:id="@+id/menu_categoria"
-                android:icon="@drawable/ic_menu_send"
-                android:visible="false"
+                android:icon="@drawable/ic_menu_listcat"
                 android:title="@string/menu_categorias" />
             <item
                 android:id="@+id/menu_listaruser"
-                android:icon="@drawable/ic_menu_share"
-                android:visible="false"
-                android:title="@string/menu_listarlibros" />
+                android:icon="@drawable/ic_menu_listuser"
+                android:title="@string/menu_listaruser" />
             <item
                 android:id="@+id/menu_actividad"
-                android:icon="@drawable/ic_menu_send"
-                android:visible="false"
+                android:icon="@drawable/ic_menu_transaccion"
                 android:title="@string/menu_actividad" />
         </menu>
     </item>

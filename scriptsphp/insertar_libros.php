@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion= $_POST['descripcion'];
     $estadoLibro= $_POST['estadoLibro'];
     $ubicacion= $_POST['ubicacion'];
+    $categoria= $_POST['categoria'];
 
     $ImageData = $_POST['image_data'];
  	$ImageName = $_POST['image_tag'];
@@ -54,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		            $portada,
 		            $descripcion,
 		            $estadoLibro,
-		            $ubicacion);
+		            $ubicacion,
+		            $categoria);
 
     if ($retorno) {
         // Código de éxito
