@@ -57,59 +57,79 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 )
             );
         }
-        }  
-        else
-        {
+        }
+        else{
             if (isset($_GET['libroAutor'])) {
        
-                // Obtener parámetro idMeta
-                $parametro = $_GET['libroAutor'];
-                // Tratar retorno
-                $retorno = Libros::getByAutor($parametro);
+            // Obtener parámetro idMeta
+            $parametro = $_GET['libroAutor'];
+            // Tratar retorno
+            $retorno = Libros::getByAutor($parametro);
 
-
-                if ($retorno) {
-
-                    $datos["estado"] = "1";
-                    $datos["Libros"] = $retorno;
-                    // Enviar objeto json de nlos datos
-                    print json_encode($datos);
-                } else {
-                    // Enviar respuesta de error general
-                    print json_encode(
-                        array(
-                            'estado' => '2',
-                            'mensaje' => 'No se obtuvieron registros'
-                        )
-                    );
-                }
-            }  
+            if ($retorno) {
+                $datos["estado"] = "1";
+                $datos["Libros"] = $retorno;
+                // Enviar objeto json de nlos datos
+                print json_encode($datos);
+            } else {
+                // Enviar respuesta de error general
+                print json_encode(
+                    array(
+                        'estado' => '2',
+                        'mensaje' => 'No se obtuvieron registros'
+                    )
+                );
+                    }
+            }
             else
             {
-                // Obtener parámetro idLibro
-                $parametro = $_GET['idLibro'];
-                // Tratar retorno
-                $retorno = Libros::getById($parametro);
-
-
-                if ($retorno) {
-
-                    $datos["estado"] = "1";
-                    $datos["Libros"] = $retorno;
-                    // Enviar objeto json de nlos datos
-                    print json_encode($datos);
-                } else {
-                    // Enviar respuesta de error general
-                    print json_encode(
-                        array(
-                            'estado' => '2',
-                            'mensaje' => 'No se obtuvo el registro'
-                        )
-                    );
-        }
+                 if (isset($_GET['idLibro'])) {
+                  
+                 $parametro = $_GET['idLibro'];
+                 // Tratar retorno
+                 $retorno = Libros::getById($parametro);
+                 if ($retorno) {
+                     $datos["estado"] = "1";
+                     $datos["Libros"] = $retorno;
+                     // Enviar objeto json de nlos datos
+                     print json_encode($datos);
+                 } else {
+                     // Enviar respuesta de error general
+                     print json_encode(
+                         array(
+                             'estado' => '2',
+                             'mensaje' => 'No se obtuvo el registro'
+                         )
+                     );
+                    }
+                }
+                else{
+                       if (isset($_GET['codUsuario'])) {
+                        
+                       $parametro = $_GET['codUsuario'];
+                       // Tratar retorno
+                       $retorno = Libros::getByUsuario($parametro);
+                       if ($retorno) {
+                           $datos["estado"] = "1";
+                           $datos["Libros"] = $retorno;
+                           // Enviar objeto json de nlos datos
+                           print json_encode($datos);
+                       } else {
+                           // Enviar respuesta de error general
+                           print json_encode(
+                               array(
+                                   'estado' => '2',
+                                   'mensaje' => 'No se obtuvo el registro'
+                               )
+                           );
+                             }
+                        }  
+                    }   
             }
-        }
-    }  
+
+        }  
+    }
+
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

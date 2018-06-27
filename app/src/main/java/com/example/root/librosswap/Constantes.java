@@ -18,6 +18,7 @@ public class Constantes {
     public static final String GetLibrosTitulo = ServerPath+"obtener_libros_id.php?libroTitulo=";
     public static final String GetLibrosAutor = ServerPath+"obtener_libros_id.php?libroAutor=";
     public static final String GetLibrosID = ServerPath+"obtener_libros_id.php?idLibro=";
+    public static final String GetLibrosUsuario =ServerPath+"obtener_libros_id.php?codUsuario=";
 
     public static final String InsertLibros = ServerPath+"insertar_libros.php";
 

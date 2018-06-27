@@ -13,7 +13,7 @@
             android:icon="@drawable/ic_menu_account"
             android:title="@string/menu_cuenta" />
         <item
-            android:id="@+id/menu_libros"
+            android:id="@+id/menu_librosuser"
             android:icon="@drawable/ic_menu_book"
             android:title="@string/menu_libros" />
         <item

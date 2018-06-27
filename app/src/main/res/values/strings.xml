@@ -46,17 +46,17 @@
     <string name="reg_contraseñarcc">Repita su nueva Contraseña</string>
 
     <!-- String para dialog de agregar libros -->
-    <string name="regdiag_lsbm">LSBM (Opcional)</string>
-    <string name="regdiag_titulo">Titulo de mi Libro</string>
-    <string name="regdiag_autor">Autor de mi Libro</string>
-    <string name="regdiag_edicion">Edicion</string>
+    <string name="regdiag_lsbm">ISBN (Opcional)</string>
+    <string name="regdiag_titulo">Titulo del Libro</string>
+    <string name="regdiag_autor">Autor de del Libro</string>
+    <string name="regdiag_edicion">Edicion (Opcional)</string>
     <string name="regdiag_aniopublicacion">Año de Publ.</string>
-    <string name="regdiag_editorial">Editorial de mi Libro</string>
-    <string name="regdiag_portada">Portada de mi Libro</string>
+    <string name="regdiag_editorial">Editorial del Libro</string>
+    <string name="regdiag_portada">Portada del Libro</string>
     <string name="regdiag_portadatxt">Opcional</string>
-    <string name="regdiag_descripcion">Descripción de mi Libro</string>
-    <string name="regdiag_estadolibro">Estado de mi Libro</string>
-    <string name="regdiag_ubicacion">Ubicacion de mi Libro</string>
+    <string name="regdiag_descripcion">Descripción del Libro</string>
+    <string name="regdiag_estadolibro">Estado del Libro</string>
+    <string name="regdiag_ubicacion">Ubicacion del Libro</string>
 
 
     <!-- String para fragment de categorias-->

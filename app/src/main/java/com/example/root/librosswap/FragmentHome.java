@@ -11,9 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +56,6 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentHome extends BaseVolleyFragment {
-
-    public List<CategoClass> listcategorias = new ArrayList<>();
     //Clase que guarda el usuario logueado
     SharedPrefUsuarios sesionuser;
     HashMap<String, String> user;
@@ -73,7 +73,7 @@ public class FragmentHome extends BaseVolleyFragment {
     Bundle bundleidcat;
     private int posicionestado;
     private int posicioncategoria;
-    String[][] arraycategoria;
+
     //variables para accedera storage
     EditText portadalil;
     private int PICK_IMAGE_REQUEST = 1;
@@ -91,6 +91,9 @@ public class FragmentHome extends BaseVolleyFragment {
     String ubicacionls;
     String categorials;
     String estadolibrols;
+    String[] arrayidcat;
+    String[] arraynomcat;
+
     //variables de imagen
     String extension;
     private String filename;
@@ -113,7 +116,7 @@ public class FragmentHome extends BaseVolleyFragment {
 
         sesionuser =new SharedPrefUsuarios(getContext());
         user = sesionuser.getUserDetails();
-
+        ReceiveWSCategoriaLibros();
         //Casteo de  imagenes de categoria
         TextView cat1=v.findViewById(R.id.imagetext1);
         TextView cat2=v.findViewById(R.id.imagetext2);
@@ -185,7 +188,6 @@ public class FragmentHome extends BaseVolleyFragment {
         agregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReceiveWSCategoriaLibros();
                 View Viewagregar = getLayoutInflater().inflate(R.layout.dialog_agregarlibros, null);
                 AlertDialog.Builder Builder = new AlertDialog.Builder(getContext());
                 final EditText titulol=Viewagregar.findViewById(R.id.diall_titulo);
@@ -201,27 +203,18 @@ public class FragmentHome extends BaseVolleyFragment {
 
                 Button btnagregar = (Button) Viewagregar.findViewById(R.id.btn_dialogbusb);
                 Button btnsalir = (Button) Viewagregar.findViewById(R.id.btn_dialogbuss);
-                /*
-                String[] arraycategoriai= new String[listcategorias.size()];
-                String[] arraycategorian= new String[listcategorias.size()];
-                for (int i = 0; i <= listcategorias.size(); i++) {
-                        arraycategoriai[i]=listcategorias.getClass()
-                }
-                */
-                String[] arraycategorian= {"1","2"};
-                //Inflar spinner de estado y categorai de los libros a agregar
+
                 Spinner spinnercategoria = Viewagregar.findViewById(R.id.spinnercategorialibro);
-                ArrayAdapter<String> adaptadorcat = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraycategorian);
+                ArrayAdapter<String> adaptadorcat = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraynomcat);
                 adaptadorcat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnercategoria.setAdapter(adaptadorcat);
                 posicioncategoria= spinnercategoria.getSelectedItemPosition();
 
-                Spinner spinnerestado = Viewagregar.findViewById(R.id.spinnerestadolibro);
-                String[] arraytipo = {"Estado Libro","1/10","2/10","3/10","4/10","5/10","6/10","7/10","8/10","9/10","10/10"};
+                final Spinner spinnerestado = Viewagregar.findViewById(R.id.spinnerestadolibro);
+                String[] arraytipo = {"1/10","2/10","3/10","4/10","5/10","6/10","7/10","8/10","9/10","10/10"};
                 ArrayAdapter<String> adaptadores = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraytipo);
                 adaptadores.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerestado.setAdapter(adaptadores);
-                posicionestado= spinnerestado.getSelectedItemPosition();
 
                 //Acciones de Botones
 
@@ -244,12 +237,55 @@ public class FragmentHome extends BaseVolleyFragment {
                         descripls=descripl.getText().toString();
                         ubicacionls=ubicacionl.getText().toString();
 
-                        categorials=Integer.toString(posicioncategoria+2);
+                        categorials=spinnerestado.getSelectedItem().toString();
+
                         estadolibrols=Integer.toString(posicionestado+1);
-                        uploadSelectedImageToServer();
 
-                        //Toast.makeText(getContext(),filename, Toast.LENGTH_LONG).show();
+                        titulol.setError(null);
+                        autordil.setError(null);
+                        lbsml.setError(null);
+                        edicionl.setError(null);
+                        aniopublil.setError(null);
+                        editoriall.setError(null);
+                        descripl.setError(null);
+                        ubicacionl.setError(null);
 
+                        View focusView = null;
+
+                        if (!Boolean.valueOf(new InternetConnection(getActivity().getApplicationContext()).isConnectingInternet()).booleanValue())
+                        {
+                            Snackbar.make(v, "Sin Conexion a Internet", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();;
+                        }
+                        else{
+                            if (TextUtils.isEmpty(titulols)
+                                    ||TextUtils.isEmpty(autordils)
+                                    ||TextUtils.isEmpty(descripls)
+                                    ||TextUtils.isEmpty(ubicacionls)
+                                    ||TextUtils.isEmpty(editorialls))
+                            {
+                                //dialog.dismiss();
+                                Snackbar.make(v, "Asegurese de llenar los campos Titulo, Autor, Descripción, Editorial", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+
+                            }
+                            else {
+                                if (!TextUtils.isEmpty(lbsmls))
+                                {   if (lbsmls.length()<11||lbsmls.length()>13)
+                                    {
+                                        lbsml.setError("El ISBN necesita tener 11 o 13 digitos");
+                                        focusView=lbsml;
+                                        focusView.requestFocus();
+                                     }
+                                     else {
+                                    uploadSelectedImageToServer();
+                                    }
+                                }
+                                else {
+                                    uploadSelectedImageToServer();
+                                }
+                            }
+                        }
                     }
                 });
                 btnsalir.setOnClickListener(new View.OnClickListener() {
@@ -517,19 +553,17 @@ public class FragmentHome extends BaseVolleyFragment {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonarray = response.getJSONArray("categorias");
-                            CategoClass categ;
-                            listcategorias.clear();
-                            for (int i = 0; i <= jsonarray.length(); i++) {
+                            arrayidcat=new String[jsonarray.length()];
+                            arraynomcat=new String[jsonarray.length()];
+                            for (int i = 0; i <= jsonarray.length()+1; i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String idcat=jsonObject.getString("cat_idCategoria");
-                                String nombrecat=jsonObject.getString("cat_nombreCategoria");
-                                categ=new CategoClass(idcat,nombrecat);
-                                listcategorias.add(categ);
+                                arrayidcat[i]=jsonObject.getString("cat_idCategoria");
+                                arraynomcat[i]=jsonObject.getString("cat_nombreCategoria");
                             }
                             //Toast.makeText(getContext(), arraycategoria[2][1].toString()+arraycategoria[2][2].toString(), Toast.LENGTH_SHORT).show();
                         }
                         catch (JSONException e) {
-                            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -555,7 +589,8 @@ public class FragmentHome extends BaseVolleyFragment {
                     @Override
                     public void onResponse(String s) {
                         dialogsubida.dismiss();
-                        Toast.makeText(getContext(), s , Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Agregado Correctamente" , Toast.LENGTH_LONG).show();
+                        getAlertDialogBuilderlibro.dismiss();
                     }
                 },
                 new Response.ErrorListener() {

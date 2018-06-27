@@ -88,6 +88,41 @@ class Libros
             return -1;
         }
     }
+
+    public static function getByUsuario($codUsuario)
+    {
+        // Consulta de la meta
+        $consulta = "SELECT li_idLibros,
+                            li_codUsuario,
+                            li_idISBN,
+                            li_titulo,
+                            li_autor,
+                            li_edicion,
+                            li_añoPublicacion,
+                            li_editorial,
+                            li_portada,
+                            li_descripcion,
+                            li_estadoLibro,
+                            li_ubicacion,
+                            li_categoriaLibro
+                             FROM ls_Libros
+                             WHERE li_codUsuario = ?";
+
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute(array($codUsuario));
+            // Capturar primera fila del resultado
+            $row = $comando->fetchall(PDO::FETCH_ASSOC);
+            return $row;
+
+        } catch (PDOException $e) {
+            // Aquí puedes clasificar el error dependiendo de la excepción
+            // para presentarlo en la respuesta Json
+            return -1;
+        }
+    }
     public static function getByCategoria($Catlibro)
     {
         // Consulta de la meta
@@ -173,7 +208,7 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            ls_Librocategoria.lc_categoria1
+                            li_categoriaLibro
                             FROM ls_Libros
                             WHERE li_autor like ?";
 
