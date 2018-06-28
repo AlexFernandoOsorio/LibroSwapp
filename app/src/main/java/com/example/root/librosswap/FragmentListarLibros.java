@@ -83,6 +83,7 @@ public class FragmentListarLibros extends BaseVolleyFragment {
         libroadapter.notifyDataSetChanged();
         recyclerView.setNestedScrollingEnabled(false);
 
+
         return v;
     }
 
@@ -101,12 +102,22 @@ public class FragmentListarLibros extends BaseVolleyFragment {
                             listlibros.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
+                                String idlibro=jsonObject.getString("li_idLibros");
                                 String coduser=jsonObject.getString("li_codUsuario");
+                                String isbnn=jsonObject.getString("li_idISBN");
                                 String titulon=jsonObject.getString("li_titulo");
                                 String autorn=jsonObject.getString("li_autor");
-                                String estadon=jsonObject.getString("li_estadoLibro")+"/10";
+                                String edicionn=jsonObject.getString("li_edicion");
+                                String anion=jsonObject.getString("li_añoPublicacion");
+                                String editorialn=jsonObject.getString("li_editorial");
                                 String portadan=jsonObject.getString("li_portada");
-                                libro=new LibrosClass(coduser,titulon,autorn,estadon,portadan);
+                                String descrip=jsonObject.getString("li_descripcion");
+                                String estadon=jsonObject.getString("li_estadoLibro")+"/10";
+                                String ubicacionn=jsonObject.getString("li_ubicacion");
+                                String categorian=jsonObject.getString("li_categoriaLibro");
+
+                                libro=new LibrosClass(idlibro,coduser,isbnn,titulon,autorn,edicionn,anion,editorialn,
+                                        portadan,descrip,estadon,ubicacionn,categorian);
                                 listlibros.add(libro);
                                 libroadapter.notifyDataSetChanged();
                             }

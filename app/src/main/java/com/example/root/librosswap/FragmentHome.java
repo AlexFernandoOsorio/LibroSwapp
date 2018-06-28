@@ -193,7 +193,7 @@ public class FragmentHome extends BaseVolleyFragment {
                 final EditText titulol=Viewagregar.findViewById(R.id.diall_titulo);
                 final EditText autordil=Viewagregar.findViewById(R.id.diall_autor);
                 final EditText lbsml=Viewagregar.findViewById(R.id.diall_lsbm);
-                final EditText edicionl=Viewagregar.findViewById(R.id.diall_lsbm);
+                final EditText edicionl=Viewagregar.findViewById(R.id.diall_edicion);
                 final EditText aniopublil=Viewagregar.findViewById(R.id.diall_añopubl);
                 portadalil=Viewagregar.findViewById(R.id.diall_imgtext);
                 final EditText editoriall=Viewagregar.findViewById(R.id.diall_editorial);

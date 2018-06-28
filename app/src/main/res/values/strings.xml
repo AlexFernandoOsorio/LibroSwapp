@@ -58,6 +58,19 @@
     <string name="regdiag_estadolibro">Estado del Libro</string>
     <string name="regdiag_ubicacion">Ubicacion del Libro</string>
 
+    <!-- String para dialog de modificar/eliminar libros -->
+    <string name="regdiagm_lsbm">Nuevo ISBN</string>
+    <string name="regdiagm_titulo">Nuevo Titulo</string>
+    <string name="regdiagm_autor">Nuevo Autor</string>
+    <string name="regdiagm_edicion">Edicion</string>
+    <string name="regdiagm_aniopublicacion">Año de Publ.</string>
+    <string name="regdiagm_editorial">Nueva Editorial</string>
+    <string name="regdiagm_portada">Portada del Libro</string>
+    <string name="regdiagm_portadatxt">Opcional</string>
+    <string name="regdiagm_descripcion">Nueva Descripción</string>
+    <string name="regdiagm_estadolibro">Estado del Libro</string>
+    <string name="regdiagm_ubicacion">Nueva Ubicacion del Libro</string>
+
 
     <!-- String para fragment de categorias-->
     <string name="cat1">Inteligencia artificial</string>

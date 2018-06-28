@@ -278,6 +278,34 @@ class Libros
             $categoria));
     }
 
+    //update libros
+    public static function update(
+        $idISBN,
+        $titulo,
+        $autor,
+        $edicion,
+        $anioPublicacion,
+        $editorial,
+        $descripcion,
+        $ubicacion,
+        $idLibro
+    )
+    {
+        // Creando consulta UPDATE
+        $consulta = "UPDATE ls_Libros" .
+            " SET li_idISBN=?, li_titulo=?, li_autor=?, li_edicion=?, li_añoPublicacion=?, li_editorial=?, li_descripcion=?, li_ubicacion=? " .
+            "WHERE li_idLibros=?";
+
+        // Preparar la sentencia
+        $cmd = Database::getInstance()->getDb()->prepare($consulta);
+
+        // Relacionar y ejecutar la sentencia
+        $cmd->execute(array($idISBN, $titulo, $autor, $edicion, $anioPublicacion, $editorial,
+            $descripcion,$ubicacion,$idLibro));
+
+        return $cmd;
+    }
+
     /**
      * Eliminar el registro con el identificador especificado
      *

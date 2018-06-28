@@ -13,11 +13,13 @@ public class LibrosClass {
     private String descripcio;
     private String estadoLibr;
     private String ubicacion;
+    private String Categoria;
 
     public LibrosClass() {
     }
 
-    public LibrosClass(String idLibros, String codUsuario, String idLSBM, String titulo, String autor, String edicion, String anioPublicacion, String editorial, String portada, String descripcio, String estadoLibr, String ubicacion) {
+    public LibrosClass(String idLibros, String codUsuario, String idLSBM, String titulo, String autor, String edicion, String anioPublicacion, String editorial, String portada, String descripcio, String estadoLibr, String ubicacion,
+    String Categoria) {
         this.idLibros = idLibros;
         this.codUsuario = codUsuario;
         this.idLSBM = idLSBM;
@@ -30,8 +32,17 @@ public class LibrosClass {
         this.descripcio = descripcio;
         this.estadoLibr = estadoLibr;
         this.ubicacion = ubicacion;
+        this.Categoria=Categoria;
     }
 
+    public LibrosClass(String idLibros,String idLSBM, String titulo, String autor, String estadoLibr, String portada) {
+        this.idLibros=idLibros;
+        this.idLSBM = idLSBM;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.estadoLibr = estadoLibr;
+        this.portada=portada;
+    }
     public LibrosClass(String idLSBM, String titulo, String autor, String estadoLibr, String portada) {
         this.idLSBM = idLSBM;
         this.titulo = titulo;

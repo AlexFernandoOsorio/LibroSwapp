@@ -1,0 +1,54 @@
+titulol
+autordil
+lbsml
+edicionl
+aniopublil
+editoriall
+descripl
+ubicacionl
+
+
+
+
+                String titulols=titulol.getText().toString();
+               	String autordils=autordil.getText().toString();
+                String lbsmls=lbsml.getText().toString();
+                String edicionls=edicionl.getText().toString();
+                String aniopublils=aniopublil.getText().toString();
+                String editorialls=editoriall.getText().toString();
+                String descripls=descripl.getText().toString();
+                String ubicacionls=ubicacionl.getText().toString();
+
+
+                		titulols=titulol.getText().toString();
+                        autordils=autordil.getText().toString();
+                        lbsmls=lbsml.getText().toString();
+                        edicionls=edicionl.getText().toString();
+                        aniopublils=aniopublil.getText().toString();
+                        editorialls=editoriall.getText().toString();
+                        descripls=descripl.getText().toString();
+                        ubicacionls=ubicacionl.getText().toString();
+
+
+            				 private String idLibros;
+                             private String codUsuario;
+                             private String idISBN;
+                             private String titulo;
+                             private String autor;
+                             private String edicion;
+                             private String añoPublicacion;
+                             private String editorial;
+                             private String portada;
+                             private String descripcion;
+                             private String estadoLibro;
+                             private String ubicacion;
+                             private String categoriaLibro;
+
+                        private String titulols;
+                        private String autordils;
+                        private String lbsmls;
+                        private String edicionls;
+                        private String aniopublils;
+                        private String editorialls;
+                        private String descripls;
+                        private String ubicacionls;

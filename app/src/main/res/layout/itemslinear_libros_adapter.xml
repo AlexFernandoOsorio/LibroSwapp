@@ -89,7 +89,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/but_cardmodificar"
+                    android:id="@+id/but_listlimodificar"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:drawableRight="@drawable/ic_update"
@@ -98,7 +98,7 @@
                     android:theme="@style/MBM" />
 
                 <Button
-                    android:id="@+id/but_cardeliminar"
+                    android:id="@+id/but_listlieliminar"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:drawableRight="@drawable/ic_del"

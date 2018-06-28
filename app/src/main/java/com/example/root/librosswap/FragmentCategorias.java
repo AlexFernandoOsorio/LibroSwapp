@@ -174,6 +174,7 @@ public class FragmentCategorias extends BaseVolleyFragment {
                             dialog.dismiss();
                         }
                         catch (JSONException e) {
+                            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
                     }
@@ -183,7 +184,7 @@ public class FragmentCategorias extends BaseVolleyFragment {
                     public void onErrorResponse(VolleyError error) {
                         dialog.dismiss();
                         onConnectionFailed(error.toString());
-                        //Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
