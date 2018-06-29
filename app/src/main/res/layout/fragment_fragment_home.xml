@@ -260,7 +260,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/cat4"
+                        android:text="@string/cat3"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext3" />
@@ -270,7 +270,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="@string/cat5"
+                        android:text="@string/cat4"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext5" />
 
@@ -280,7 +280,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
                         android:layout_marginStart="20dp"
-                        android:text="@string/cat7"
+                        android:text="@string/cat5"
                         app:layout_constraintEnd_toStartOf="@+id/textView6"
                         app:layout_constraintStart_toEndOf="@+id/textView4"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext4" />
@@ -290,7 +290,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:text="@string/cat8"
+                        android:text="@string/cat6"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext6" />
@@ -301,7 +301,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="4dp"
-                        android:text="@string/cat9"
+                        android:text="@string/cat7"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext7" />
 
@@ -312,7 +312,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="@string/cat10"
+                        android:text="@string/cat8"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toStartOf="@+id/textView9"
                         app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -324,7 +324,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:layout_marginTop="4dp"
-                        android:text="@string/cat11"
+                        android:text="@string/cat9"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imagetext9" />

@@ -75,16 +75,13 @@
     <!-- String para fragment de categorias-->
     <string name="cat1">Inteligencia artificial</string>
     <string name="cat2">Arquitectura de computadoras</string>
-    <string name="cat3">Análisis de rendimiento de computadoras</string>
-    <string name="cat4">Cómputo científico</string>
-    <string name="cat5">Redes de computadoras</string>
-    <string name="cat6">Sistemas concurrentes, paralelos y distribuidos</string>
-    <string name="cat6.2">Sistemas concur,paralelos y distribuidos</string>
-    <string name="cat7">Bases de datos</string>
-    <string name="cat8">Informática en salud</string>
-    <string name="cat9">Ciencia de la información</string>
-    <string name="cat10">Ingeniería de software</string>
-    <string name="cat11">Otros</string>
+    <string name="cat3">Cómputo científico</string>
+    <string name="cat4">Redes de computadoras</string>
+    <string name="cat5">Bases de datos</string>
+    <string name="cat6">Informática en salud</string>
+    <string name="cat7">Ciencia de la información</string>
+    <string name="cat8">Ingeniería de software</string>
+    <string name="cat9">Otros</string>
 
     <!-- String para fragments del menu lateral-->
     <string name="menu_cuenta">Mi Cuenta</string>
@@ -103,4 +100,42 @@
     <string name="but_agregar">A</string>
     <string name="but_modificar">M</string>
     <string name="but_eliminar">E</string>
+
+    <!-- String para fragment de descripcion de libros a solicitar-->
+    <string name="libdes_txt_isbn">ISBN :</string>
+    <string name="libdes_txt_Titulo">Titulo :</string>
+    <string name="libdes_txt_Autor">Autor :</string>
+    <string name="libdes_txt_Edicion">Edición :</string>
+    <string name="libdes_txt_Desc">Descripción :</string>
+    <string name="libdes_txt_Dispo">Disponibilidad :</string>
+    <string name="libdes_txt_Ubica">Ubicacion del Libro:</string>
+    <string name="libdes_txt_Estado">Estado del Libro :</string>
+    <string name="libdes_txt_Editorial">Editorial del Libro</string>
+    <string name="libdes_txt_CopDue">Codigo del Usuario Portante:</string>
+    <string name="libdes_txt_UserDue">Usuario  :</string>
+
+    <string name="libdes_txt_EstadoUser">Estado :</string>
+    <string name="libdes_txt_Correo">Correo :</string>
+    <string name="libdes_txt_Skype">Skype :</string>
+    <string name="libdes_txt_Direccion">Dirección :</string>
+    <string name="libdes_txt_Celular">Celular :</string>
+    <string name="libdes_txt_Telefono">Telefono  :</string>
+    <string name="libdes_txt_Intereses">Intereses  :</string>
+
+    <string name="libdes_but_Solicitar">Solicitar Libro</string>
+    <string name="libdes_but_Cancelar">Cancelar Peticion</string>
+
+    <string name="libdes_but_Prestamo">Telefono  :</string>
+    <string name="libdes_but_Rechazar">Intereses  :</string>
+
+
+
+
+
+
+
+
+
+
+
 </resources>

@@ -24,8 +24,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="8dp"
             android:minHeight="?attr/listPreferredItemHeight"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,15 +34,102 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="3">
-                    <ImageView
-                        android:id="@+id/img_cardportada"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:scaleType="fitXY"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true" />
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="7">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Titulo"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_titulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Autor"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_autor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_isbn"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_isbn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Edicion"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_edicion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Editorial"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_editorial"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Dispo"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_dispon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Desc"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_descr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_Ubica"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_ubic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_CopDue"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_coduser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_txt_UserDue"
+                        />
+                    <TextView
+                        android:id="@+id/libdes_nombreuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp" />
+
 
                 </LinearLayout>
                 <LinearLayout
@@ -53,46 +139,26 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="5dp"
-                    android:layout_weight="7">
-                    <TextView
-                        android:id="@+id/txt_cardlsbm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="New Text"
-                        tools:text="LSBM" />
+                    android:layout_weight="3">
 
-                    <TextView
-                        android:id="@+id/txt_cardtitulo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="New Text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                        tools:text="Titulo" />
-
-                    <TextView
-                        android:id="@+id/txt_cardautor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Autor" />
-
-                    <TextView
-                        android:id="@+id/txt_cardestadolibro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                        android:textStyle="italic"
-                        tools:text="Estado Libro" />
-
+                    <ImageView
+                        android:id="@+id/libimg_cardportada"
+                        android:layout_width="120dp"
+                        android:layout_height="150dp"
+                        android:scaleType="center"
+                        android:layout_gravity="center"/>
                     <Button
-                        android:id="@+id/btn_cardacceder"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/libdes_but_solicitar"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Leer"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                        android:textColor="?attr/colorPrimary"
-                        android:textSize="13sp" />
-
+                        android:text="@string/libdes_but_Solicitar"
+                        android:textSize="10sp"/>
+                    <Button
+                        android:id="@+id/libdes_but_cancelar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/libdes_but_Cancelar"
+                        android:textSize="10sp"/>
                 </LinearLayout>
 
             </LinearLayout>

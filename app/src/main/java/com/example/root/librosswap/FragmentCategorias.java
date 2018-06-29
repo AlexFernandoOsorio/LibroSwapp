@@ -72,7 +72,7 @@ public class FragmentCategorias extends BaseVolleyFragment {
         //Metodo invocado para recibir los datos de los libros
         //Identificador();
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.notifications_list);
+        recyclerView = v.findViewById(R.id.notifications_list);
         libroadapter = new AdapterLibros(listlibros);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -120,12 +120,13 @@ public class FragmentCategorias extends BaseVolleyFragment {
                             listlibros.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
+                                String idlibron=jsonObject.getString("li_idLibros");
                                 String lsbmn=jsonObject.getString("li_idISBN");
                                 String titulon=jsonObject.getString("li_titulo");
                                 String autorn=jsonObject.getString("li_autor");
                                 String estadon=jsonObject.getString("li_estadoLibro")+"/10";
                                 String portadan=jsonObject.getString("li_portada");
-                                libro=new LibrosClass(lsbmn,titulon,autorn,estadon,portadan);
+                                libro=new LibrosClass(idlibron,lsbmn,titulon,autorn,estadon,portadan);
                                 listlibros.add(libro);
                                 libroadapter.notifyDataSetChanged();
                             }
@@ -162,12 +163,13 @@ public class FragmentCategorias extends BaseVolleyFragment {
                             listlibros.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String lsbmn=jsonObject.getString("li_idLSBM");
+                                String idlibron=jsonObject.getString("li_idLibros");
+                                String lsbmn=jsonObject.getString("li_idISBN");
                                 String titulon=jsonObject.getString("li_titulo");
                                 String autorn=jsonObject.getString("li_autor");
                                 String estadon=jsonObject.getString("li_estadoLibro")+"/10";
                                 String portadan=jsonObject.getString("li_portada");
-                                libro=new LibrosClass(lsbmn,titulon,autorn,estadon,portadan);
+                                libro=new LibrosClass(idlibron,lsbmn,titulon,autorn,estadon,portadan);
                                 listlibros.add(libro);
                                 libroadapter.notifyDataSetChanged();
                             }
@@ -205,12 +207,13 @@ public class FragmentCategorias extends BaseVolleyFragment {
                             listlibros.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String lsbmn=jsonObject.getString("li_idLSBM");
+                                String idlibron=jsonObject.getString("li_idLibros");
+                                String lsbmn=jsonObject.getString("li_idISBN");
                                 String titulon=jsonObject.getString("li_titulo");
                                 String autorn=jsonObject.getString("li_autor");
                                 String estadon=jsonObject.getString("li_estadoLibro")+"/10";
                                 String portadan=jsonObject.getString("li_portada");
-                                libro=new LibrosClass(lsbmn,titulon,autorn,estadon,portadan);
+                                libro=new LibrosClass(idlibron,lsbmn,titulon,autorn,estadon,portadan);
                                 listlibros.add(libro);
                                 libroadapter.notifyDataSetChanged();
                             }
@@ -231,9 +234,9 @@ public class FragmentCategorias extends BaseVolleyFragment {
         );
         addToQueue(obreq);
     }
-    public void ReceiveWSLibrosCategoria()
+    public void ReceiveWSLibrosCategoria(String bundlesearch)
     {
-        final String JsonURL = Constantes.GetLibrosCat+bundledatsearch;
+        final String JsonURL = Constantes.GetLibrosCat+bundlesearch;
         final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
                 new Response.Listener<JSONObject>() {
 
@@ -241,17 +244,18 @@ public class FragmentCategorias extends BaseVolleyFragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonarray = response.getJSONArray("libros");
+                            JSONArray jsonarray = response.getJSONArray("Libros");
                             LibrosClass libro;
                             listlibros.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
                                 JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String lsbmn=jsonObject.getString("li_idLSBM");
+                                String idlibron=jsonObject.getString("li_idLibros");
+                                String lsbmn=jsonObject.getString("li_idISBN");
                                 String titulon=jsonObject.getString("li_titulo");
                                 String autorn=jsonObject.getString("li_autor");
                                 String estadon=jsonObject.getString("li_estadoLibro")+"/10";
                                 String portadan=jsonObject.getString("li_portada");
-                                libro=new LibrosClass(lsbmn,titulon,autorn,estadon,portadan);
+                                libro=new LibrosClass(idlibron,lsbmn,titulon,autorn,estadon,portadan);
                                 listlibros.add(libro);
                                 libroadapter.notifyDataSetChanged();
                             }
@@ -266,9 +270,7 @@ public class FragmentCategorias extends BaseVolleyFragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         dialog.dismiss();
-                        //onConnectionFailed(error.toString());
-                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_SHORT).show();
-
+                        onConnectionFailed(error.toString());
                     }
                 }
         );
@@ -290,40 +292,41 @@ public class FragmentCategorias extends BaseVolleyFragment {
                 tituloFrag="Libros por Autor";
                 ReceiveWSLibrosAutor();
                 break;
-            case "cat11":
+            case "catn1":
                 tituloFrag="Libros de "+getString(R.string.cat1);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat12":
+            case "catn2":
                 tituloFrag="Libros de "+getString(R.string.cat2);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat14":
+            case "catn3":
+                tituloFrag="Libros de "+getString(R.string.cat3);
+                ReceiveWSLibrosCategoria(bundledatsearch);
+                break;
+            case "catn4":
                 tituloFrag="Libros de "+getString(R.string.cat4);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat15":
+            case "catn5":
                 tituloFrag="Libros de "+getString(R.string.cat5);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat17":
+            case "catn6":
+                tituloFrag="Libros de "+getString(R.string.cat6);
+                ReceiveWSLibrosCategoria(bundledatsearch);
+                break;
+            case "catn7":
                 tituloFrag="Libros de "+getString(R.string.cat7);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat18":
+            case "catn8":
                 tituloFrag="Libros de "+getString(R.string.cat8);
-                ReceiveWSLibrosCategoria();
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
-            case "cat19":
+            case "catn9":
                 tituloFrag="Libros de "+getString(R.string.cat9);
-                ReceiveWSLibrosCategoria();
-                break;
-            case "cat110":
-                tituloFrag="Libros de "+getString(R.string.cat10);
-                ReceiveWSLibrosCategoria();
-                break;
-            case "cat111":
-                tituloFrag="Libros de "+getString(R.string.cat11);
+                ReceiveWSLibrosCategoria(bundledatsearch);
                 break;
         }
 

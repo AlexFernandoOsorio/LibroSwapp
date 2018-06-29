@@ -131,7 +131,7 @@ public class FragmentHome extends BaseVolleyFragment {
         cat1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(0);
+                setFragment(11);
             }
         });
         cat2.setOnClickListener(new View.OnClickListener() {
@@ -143,43 +143,43 @@ public class FragmentHome extends BaseVolleyFragment {
         cat3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(14);
+                setFragment(13);
             }
         });
         cat4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(15);
+                setFragment(14);
             }
         });
         cat5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(17);
+                setFragment(15);
             }
         });
         cat6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(18);
+                setFragment(16);
             }
         });
         cat7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(19);
+                setFragment(17);
             }
         });
         cat8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(110);
+                setFragment(18);
             }
         });
         cat9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(111);
+                setFragment(19);
             }
         });
 
@@ -411,7 +411,7 @@ public class FragmentHome extends BaseVolleyFragment {
             case 11:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat11");
+                bundleidcat.putString("ID","catn1");
                 bundleidcat.putString("Search","1");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
@@ -421,8 +421,18 @@ public class FragmentHome extends BaseVolleyFragment {
             case 12:
                 //Fragmento para listar por categoria 2
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat12");
+                bundleidcat.putString("ID","catn2");
                 bundleidcat.putString("Search","2");
+                Cat.setArguments(bundleidcat);
+                fragmentTransaction.replace(R.id.fragmenti, Cat);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                break;
+            case 13:
+                //Fragmento para listar por categoria 1
+                bundleidcat=new Bundle();
+                bundleidcat.putString("ID","catn3");
+                bundleidcat.putString("Search","3");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
                 fragmentTransaction.addToBackStack(null);
@@ -431,7 +441,7 @@ public class FragmentHome extends BaseVolleyFragment {
             case 14:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat14");
+                bundleidcat.putString("ID","catn4");
                 bundleidcat.putString("Search","4");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
@@ -441,8 +451,18 @@ public class FragmentHome extends BaseVolleyFragment {
             case 15:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat15");
+                bundleidcat.putString("ID","catn5");
                 bundleidcat.putString("Search","5");
+                Cat.setArguments(bundleidcat);
+                fragmentTransaction.replace(R.id.fragmenti, Cat);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+                break;
+            case 16:
+                //Fragmento para listar por categoria 1
+                bundleidcat=new Bundle();
+                bundleidcat.putString("ID","catn6");
+                bundleidcat.putString("Search","6");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
                 fragmentTransaction.addToBackStack(null);
@@ -451,7 +471,7 @@ public class FragmentHome extends BaseVolleyFragment {
             case 17:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat17");
+                bundleidcat.putString("ID","catn7");
                 bundleidcat.putString("Search","7");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
@@ -461,7 +481,7 @@ public class FragmentHome extends BaseVolleyFragment {
             case 18:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat18");
+                bundleidcat.putString("ID","catn8");
                 bundleidcat.putString("Search","8");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
@@ -471,28 +491,8 @@ public class FragmentHome extends BaseVolleyFragment {
             case 19:
                 //Fragmento para listar por categoria 1
                 bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat19");
+                bundleidcat.putString("ID","catn9");
                 bundleidcat.putString("Search","9");
-                Cat.setArguments(bundleidcat);
-                fragmentTransaction.replace(R.id.fragmenti, Cat);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                break;
-            case 110:
-                //Fragmento para listar por categoria 1
-                bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat110");
-                bundleidcat.putString("Search","10");
-                Cat.setArguments(bundleidcat);
-                fragmentTransaction.replace(R.id.fragmenti, Cat);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                break;
-            case 111:
-                //Fragmento para listar por categoria 1
-                bundleidcat=new Bundle();
-                bundleidcat.putString("ID","cat110");
-                bundleidcat.putString("Search","10");
                 Cat.setArguments(bundleidcat);
                 fragmentTransaction.replace(R.id.fragmenti, Cat);
                 fragmentTransaction.addToBackStack(null);
