@@ -148,7 +148,7 @@ public class NavigLibros extends BaseVolleyActivity
         } else if (id == R.id.menu_categoria) {
             setFragmentn(4);
         } else if (id == R.id.menu_listaruser) {
-            setFragmentn(1);
+            setFragmentn(5);
         } else if (id == R.id.menu_actividad) {
 
         }
@@ -192,6 +192,10 @@ public class NavigLibros extends BaseVolleyActivity
                 break;
             case 4:
                 fragmentTransaction.replace(R.id.fragmenti, categorias);
+                fragmentTransaction.commit();
+                break;
+            case 5:
+                fragmentTransaction.replace(R.id.fragmenti, Users);
                 fragmentTransaction.commit();
                 break;
         }

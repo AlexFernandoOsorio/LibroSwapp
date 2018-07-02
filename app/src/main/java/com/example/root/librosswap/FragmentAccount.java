@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -17,12 +19,39 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentAccount extends BaseVolleyFragment {
 
+    SharedPrefUsuarios sesionuser;
+    HashMap<String, String> user;
+
+    //Casteo de Edittext
+    TextView enombreapell;
+    TextView ecoduser;
+    TextView ecorreo;
+    TextView eskype;
+    TextView eestado;
+    TextView etelefono;
+    TextView ecelular;
+    TextView egenero;
+    TextView einteres;
+    //String que contienen los datos guardados en el Shared preferences
+    String snombreapell;
+    String scoduser;
+    String scorreo;
+    String sskype;
+    String sestado;
+    String stelefono;
+    String scelular;
+    String sgenero;
+    String sinteres;
+
+    Button btactualiza;
 
     public FragmentAccount() {
         // Required empty public constructor
@@ -36,72 +65,40 @@ public class FragmentAccount extends BaseVolleyFragment {
         View v = inflater.inflate(R.layout.fragment_fragment_account, container, false);
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle("Mi Cuenta");
+        sesionuser =new SharedPrefUsuarios(getContext());
+        user = sesionuser.getUserDetails();
+
+        enombreapell=v.findViewById(R.id.txt_account_nombre);
+        ecorreo=v.findViewById(R.id.txt_account_correo);
+        ecoduser=v.findViewById(R.id.txt_account_coduser);
+        eskype=v.findViewById(R.id.txt_account_skype);
+        eestado=v.findViewById(R.id.txt_account_estado);
+        etelefono=v.findViewById(R.id.txt_account_telefono);
+        ecelular=v.findViewById(R.id.txt_account_celular);
+        egenero=v.findViewById(R.id.txt_account_genero);
+        einteres=v.findViewById(R.id.txt_account_intereses);
+        btactualiza=v.findViewById(R.id.but_account_actualizar);
+
+        snombreapell=user.get(SharedPrefUsuarios.KEY_NOM).toString()+" "+user.get(SharedPrefUsuarios.KEY_APELLIDO).toString();
+        scoduser = user.get(SharedPrefUsuarios.KEY_CODUSUER).toString();
+        scorreo = user.get(SharedPrefUsuarios.KEY_EMAIL).toString();
+        sskype = user.get(SharedPrefUsuarios.KEY_SKYPE).toString();
+        sestado = user.get(SharedPrefUsuarios.KEY_ESTADO).toString();
+        stelefono = user.get(SharedPrefUsuarios.KEY_TEL).toString();
+        scelular = user.get(SharedPrefUsuarios.KEY_CEL).toString();
+        sgenero = user.get(SharedPrefUsuarios.KEY_GEN).toString();
+        sinteres = user.get(SharedPrefUsuarios.KEY_INTERES).toString();
+
+        enombreapell.setText(snombreapell);
+        ecoduser.setText(scoduser);
+        ecorreo.setText(scorreo);
+        eskype.setText(sskype);
+        eestado.setText(sestado);
+        etelefono.setText(stelefono);
+        ecelular.setText(scelular);
+        egenero.setText(sgenero);
+        einteres.setText(sinteres);
+
         return v;
     }
-
-    /*public void ReceiveWSUsers(String User)
-    {
-        final String JsonURL = Constantes.GetUsuarioID+User;
-        final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
-                new Response.Listener<JSONObject>() {
-
-                    // Takes the response from the JSON request
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonarray = response.getJSONArray("usuario");
-                            UsersClass usuarios;
-                            //listusuarios.clear();
-                            for (int i = 0; i <= jsonarray.length(); i++) {
-                                JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String dniu=jsonObject.getString("us_dniUsuario");
-                                String tipou=jsonObject.getString("us_tipoUsuario");
-                                String nombreu=jsonObject.getString("us_nombres");
-                                String apellidosu=jsonObject.getString("us_apellidos");
-                                String estadousueru=jsonObject.getString("us_estadoUsuario");
-                                String correou=jsonObject.getString("us_correo");
-                                String celularu=jsonObject.getString("us_celular");
-                                String generou=jsonObject.getString("us_genero");
-                                switch (tipou) {
-                                    case "1":
-                                        tipou="Alumno";//alumno
-                                        break;
-                                    case "2":
-                                        tipou="Docente";//docente
-                                        break;
-                                    case "3":
-                                        tipou="Administrador";//administrativo
-                                        break;
-                                }
-                                switch (generou) {
-                                    case "M":
-                                        generou="Masculino";//
-                                        break;
-                                    case "F":
-                                        generou="Femenino";//
-                                        break;
-                                }
-                                usuarios=new UsersClass("DNI "+dniu,tipou,nombreu,apellidosu,estadousueru,
-                                        correou,"Cel "+celularu,generou);
-                                listusuarios.add(usuarios);
-                                ussuariosadapter.notifyDataSetChanged();
-                            }
-                            dialog.dismiss();
-                        }
-                        catch (JSONException e) {
-                            dialog.dismiss();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        dialog.dismiss();
-                        onConnectionFailed(error.toString());
-                    }
-                }
-        );
-        addToQueue(obreq);
-    }*/
-
 }

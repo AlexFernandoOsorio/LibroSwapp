@@ -121,20 +121,43 @@ public class LoginLibros extends BaseVolleyActivity implements LoaderCallbacks<C
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            //JSONObject Jasonobject = new JSONObject("usuarios");
+
                             JSONObject jsonuser = response.getJSONObject("usuarios");
                             for (int i = 0; i < jsonuser.length(); i++) {
-                                //JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String KEY_EMAIL = jsonuser.getString("us_correo");
-                                String KEY_PASS = jsonuser.getString("us_contraseña");
-                                String KEY_CODUSUER = jsonuser.getString("us_codUsuario");
-                                String KEY_CEL = jsonuser.getString("us_celular");
+
+                                String KEY_ID = jsonuser.getString("us_idUsuario");
                                 String KEY_DNI = jsonuser.getString("us_dniUsuario");
+                                String KEY_CODUSUER = jsonuser.getString("us_codUsuario");
+                                String KEY_TIPO = jsonuser.getString("us_tipoUsuario");
                                 String KEY_NOM = jsonuser.getString("us_nombres");
-                                String KEY_TIPOU = jsonuser.getString("us_tipoUsuario");
+                                String KEY_APELLIDO = jsonuser.getString("us_apellidos");
+                                String KEY_ESTADO = jsonuser.getString("us_estadoUsuario");
+                                String KEY_EMAIL = jsonuser.getString("us_correo");
+                                String KEY_SKYPE = jsonuser.getString("us_skype");
+                                String KEY_DIRECCION = jsonuser.getString("us_direccion");
+                                String KEY_PASS = jsonuser.getString("us_contraseña");
+                                String KEY_EDAD = jsonuser.getString("us_edad");
+                                String KEY_TEL = jsonuser.getString("us_telefono");
+                                String KEY_CEL = jsonuser.getString("us_celular");
+                                String KEY_GEN = jsonuser.getString("us_genero");
+                                String KEY_INTERES = jsonuser.getString("us_intereses");
 
-                                sesionuser.createLoginSession(emailpri,pass,KEY_CODUSUER,KEY_CEL,KEY_DNI,KEY_NOM,KEY_TIPOU);
-
+                                sesionuser.createLoginSession(KEY_ID,
+                                                                KEY_DNI,
+                                                                KEY_CODUSUER,
+                                                                KEY_TIPO,
+                                                                KEY_NOM,
+                                                                KEY_APELLIDO,
+                                                                KEY_ESTADO,
+                                                                KEY_EMAIL,
+                                                                KEY_SKYPE,
+                                                                KEY_DIRECCION,
+                                                                KEY_PASS,
+                                                                KEY_EDAD,
+                                                                KEY_CEL,
+                                                                KEY_TEL,
+                                                                KEY_GEN,
+                                                                KEY_INTERES);
                             }
                             Intent intentnavigation =new Intent(LoginLibros.this,NavigLibros.class);
                             dialog.dismiss();
