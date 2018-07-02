@@ -32,7 +32,8 @@ class Libros
                              li_descripcion,
                              li_estadoLibro,
                              li_ubicacion,
-                             li_categoriaLibro
+                             li_categoriaLibro,
+                             li_disponibilidad
                              FROM ls_Libros";
         try {
             // Preparar sentencia
@@ -69,7 +70,8 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            li_categoriaLibro
+                            li_categoriaLibro,
+                            li_disponibilidad
                              FROM ls_Libros
                              WHERE li_idLibros = ?";
 
@@ -104,7 +106,8 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            li_categoriaLibro
+                            li_categoriaLibro,
+                            li_disponibilidad
                              FROM ls_Libros
                              WHERE li_codUsuario = ?";
 
@@ -138,7 +141,8 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            li_categoriaLibro
+                            li_categoriaLibro,
+                            li_disponibilidad
                             FROM ls_Libros
                             WHERE li_categoriaLibro = ?";
 
@@ -173,7 +177,8 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            li_categoriaLibro
+                            li_categoriaLibro,
+                            li_disponibilidad
                             FROM ls_Libros
                             WHERE li_titulo like ?";
 
@@ -208,7 +213,8 @@ class Libros
                             li_descripcion,
                             li_estadoLibro,
                             li_ubicacion,
-                            li_categoriaLibro
+                            li_categoriaLibro,
+                            li_disponibilidad
                             FROM ls_Libros
                             WHERE li_autor like ?";
 
@@ -240,7 +246,8 @@ class Libros
             $descripcion,
             $estadoLibro,
             $ubicacion,
-            $categoria
+            $categoria,
+            $disponibilidad
     )
     {
         // Sentencia INSERT
@@ -256,8 +263,9 @@ class Libros
             "li_descripcion," .
             "li_estadoLibro," .
             "li_ubicacion," .
-            "li_categoriaLibro)" .
-            " VALUES( ?,?,?,?,?,?,?,?,?,?,?,?)";
+            "li_categoriaLibro," .
+            "li_disponibilidad)" .
+            " VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         // Preparar la sentencia
         $sentencia = Database::getInstance()->getDb()->prepare($comando);
@@ -275,7 +283,8 @@ class Libros
             $descripcion,
             $estadoLibro,
             $ubicacion,
-            $categoria));
+            $categoria,
+            $disponibilidad));
     }
 
     //update libros

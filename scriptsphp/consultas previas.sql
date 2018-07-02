@@ -1,11 +1,11 @@
-INSERT INTO `ls_Libros` (`li_idLibros`, `li_codUsuario`, `li_idISBN`, `li_titulo`, `li_autor`, `li_edicion`, `li_añoPublicacion`, `li_editorial`, `li_portada`, `li_descripcion`, `li_estadoLibro`, `li_ubicacion`,`li_categoriaLibro`) 
+INSERT INTO `ls_Libros` (`li_idLibros`, `li_codUsuario`, `li_idISBN`, `li_titulo`, `li_autor`, `li_edicion`, `li_añoPublicacion`, `li_editorial`, `li_portada`, `li_descripcion`, `li_estadoLibro`, `li_ubicacion`,`li_categoriaLibro`,`li_disponibilidad`) 
 VALUES
-(10, '090806-A','86014043210273', 'The Pragmatic Programmer', 'Andy Hunt,Dave Thomas', '1999','1999', 'Editorial desconocida', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro1.jpg', 'Sin Contenido', 9, 'San sebastian',10),
-(11, '090806-A','978-0131872486', 'Thinking in Java', 'Bruce Eckel', '1998','1998', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro2.jpg', 'Sin Contenido', 10, 'Santa Rosa',10),
-(12, '090806-A','97856718722226', 'Python in a nutshell', 'Alex Martelli', '2003','2003', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro3.jpg', 'Sin Contenido', 8, 'San Jeronimo',10),
-(13, '090806-A','57768681241551', 'JavaScript: The Good Parts', 'Douglas Crockford', '2008','2008', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro4.jpg', 'Sin Contenido', 8, 'San Jeronimo',10),
-(14, '090806-A','32323251817362', 'Fundamentos de bases de datos', 'Abraham Silberschatz', '1998','1998', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro5.jpg', 'Sin Contenido', 7, 'San Jeronimo',7),
-(15, '090806-A','87123247182911', 'Aprende SQL', 'Alan Beaulieu', '2010','2010', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro6.jpg', 'Sin Contenido', 10, 'San Jeronimo',7);
+(10, '090806-A','86014043210273', 'The Pragmatic Programmer', 'Andy Hunt,Dave Thomas', '1999','1999', 'Editorial desconocida', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro1.jpg', 'Sin Contenido', 9, 'San sebastian',10,1),
+(11, '090806-A','978-0131872486', 'Thinking in Java', 'Bruce Eckel', '1998','1998', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro2.jpg', 'Sin Contenido', 10, 'Santa Rosa',10,1),
+(12, '090806-A','97856718722226', 'Python in a nutshell', 'Alex Martelli', '2003','2003', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro3.jpg', 'Sin Contenido', 8, 'San Jeronimo',10,1),
+(13, '090806-A','57768681241551', 'JavaScript: The Good Parts', 'Douglas Crockford', '2008','2008', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro4.jpg', 'Sin Contenido', 8, 'San Jeronimo',10,1),
+(14, '090806-A','32323251817362', 'Fundamentos de bases de datos', 'Abraham Silberschatz', '1998','1998', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro5.jpg', 'Sin Contenido', 7, 'San Jeronimo',7,1),
+(15, '090806-A','87123247182911', 'Aprende SQL', 'Alan Beaulieu', '2010','2010', 'Editorial desconocido', 'http://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages/Libro6.jpg', 'Sin Contenido', 10, 'San Jeronimo',7,1);
 
 
 

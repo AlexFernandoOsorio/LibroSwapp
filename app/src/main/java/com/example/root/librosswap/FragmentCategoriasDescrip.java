@@ -2,6 +2,9 @@ package com.example.root.librosswap;
 
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +21,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -46,6 +54,7 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
     String estadon;
     String ubicacionn;
     String categorian;
+    String disponn;
 
     TextView isbn;
     TextView titulo;
@@ -55,6 +64,12 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
     TextView descri;
     TextView ubicacion;
     TextView dispon;
+    ImageView portada;
+
+    Button solicita;
+    Button cancela;
+    Dialog dialoghappy;
+    private static final long SPLASH_SCREEN_DELAY = 2000;
     public FragmentCategoriasDescrip() {
         // Required empty public constructor
     }
@@ -81,19 +96,46 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
         editorial=v.findViewById(R.id.libdes_editorial);
         descri=v.findViewById(R.id.libdes_descr);
         ubicacion=v.findViewById(R.id.libdes_ubic);
-        dispon=v.findViewById(R.id.libdes_ubic);
+        dispon=v.findViewById(R.id.libdes_dispon);
+        portada=v.findViewById(R.id.libdes_imgportada);
 
         TextView coduser=v.findViewById(R.id.libdes_coduser);
         TextView nombreuser=v.findViewById(R.id.libdes_coduser);
 
-        dispon.setText("Disponible");
         coduser.setText("falta verificar");
         coduser.setText("falta verificar");
 
-        Button solicita=v.findViewById(R.id.libdes_but_solicitar);
-        Button cancela=v.findViewById(R.id.libdes_but_cancelar);
+        solicita=v.findViewById(R.id.libdes_but_solicitar);
+        solicita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                dialoghappy = new Dialog(getContext());
+                dialoghappy.setContentView(R.layout.dialog_confirmalibro);
+                dialoghappy.show();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
 
+                        // Start the next activity
 
+                        dialoghappy.dismiss();
+                    }
+                };
+
+                // Simulate a long loading process on application startup.
+                Timer timer = new Timer();
+                timer.schedule(task, SPLASH_SCREEN_DELAY);
+
+            }
+        });
+        cancela=v.findViewById(R.id.libdes_but_cancelar);
+        cancela.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         return v;
     }
 
@@ -121,6 +163,7 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                                 estadon=jsonlibro.getString("li_estadoLibro")+"/10";
                                 ubicacionn=jsonlibro.getString("li_ubicacion");
                                 categorian=jsonlibro.getString("li_categoriaLibro");
+                                disponn=jsonlibro.getString("li_disponibilidad");
                             }
                             dialog.dismiss();
                             Toast.makeText(getContext(), titulon, Toast.LENGTH_SHORT).show();
@@ -131,6 +174,27 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                             editorial.setText(editorialn);
                             descri.setText(descripn);
                             ubicacion.setText(ubicacionn);
+                            if (disponn.equals("1"))
+                            {
+                                dispon.setText("Libro Disponible");
+                                dispon.setBackgroundColor(Color.GREEN);
+                                solicita.setVisibility(View.VISIBLE);
+                                cancela.setVisibility(View.GONE);
+                            }else {
+                                solicita.setVisibility(View.GONE);
+                                cancela.setVisibility(View.VISIBLE);
+                                if (disponn.equals("0"))
+                                {
+                                    dispon.setText("Libro en Transacción");
+                                    dispon.setBackgroundColor(Color.MAGENTA);
+                                }
+                                else {
+                                    if (disponn.equals("-1")){
+                                        dispon.setText("Libro No Disponible");
+                                        dispon.setBackgroundColor(Color.RED);
+                                    } }
+                            }
+                            Glide.with(getContext()).load(portadan).into(portada);
                         }
                         catch (JSONException e) {
                             dialog.dismiss();

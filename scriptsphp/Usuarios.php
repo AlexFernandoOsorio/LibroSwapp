@@ -120,6 +120,44 @@ class Usuarios
         }
     }
 
+    public static function getByID($correoUsuario)
+    {
+        // Consulta de la meta
+        $consulta = "SELECT us_idUsuario,
+                            us_dniUsuario,
+                            us_codUsuario,
+                            us_tipoUsuario,
+                            us_nombres,
+                            us_apellidos,
+                            us_estadoUsuario,
+                            us_correo,
+                            us_skype,
+                            us_direccion,
+                            us_contraseña,
+                            us_edad,
+                            us_telefono,
+                            us_celular,
+                            us_genero,
+                            us_intereses
+                            FROM ls_Usuarios
+                            WHERE us_idUsuario= ?";
+
+        try {
+            // Preparar sentencia
+            $comando = Database::getInstance()->getDb()->prepare($consulta);
+            // Ejecutar sentencia preparada
+            $comando->execute(array($correoUsuario));
+            // Capturar primera fila del resultado
+            $row = $comando->fetch(PDO::FETCH_ASSOC);
+            return $row;
+
+        } catch (PDOException $e) {
+            // Aquí puedes clasificar el error dependiendo de la excepción
+            // para presentarlo en la respuesta Json
+            return -1;
+        }
+    }
+
     /**
      * Actualiza un registro de la bases de datos basado
      * en los nuevos valores relacionados con un identificador

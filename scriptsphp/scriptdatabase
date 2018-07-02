@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `ls_Libros` (
   `li_estadoLibro` int(2) NOT NULL COMMENT '1 al 10',
   `li_ubicacion` varchar(50) NOT NULL,
   `li_categoriaLibro` int(5) NOT NULL COMMENT 'identificador',
+  `li_disponibilidad` int(2) NOT NULL COMMENT '1 0 -1 1 dis/0 en transaccion/-1 no disponible',
 
   PRIMARY KEY (`li_idLibros`),
   UNIQUE KEY `li_idISBN` (`li_idISBN`),

@@ -124,18 +124,23 @@
 
     <string name="libdes_but_Solicitar">Solicitar Libro</string>
     <string name="libdes_but_Cancelar">Cancelar Peticion</string>
-
     <string name="libdes_but_Prestamo">Telefono  :</string>
     <string name="libdes_but_Rechazar">Intereses  :</string>
 
+    <string name="dialog_libroconfirm">Felicidades, Enviamos su solicitud de prestamo del libro,
+    puede ver el estado de  solicitud en el apartado de Mis Solicitudes.</string>
 
-
-
-
-
-
-
-
+    <string name="account_dniUsuario">Numero de DNI :</string>
+    <string name="account_codUsuario">Codigo de Usuario</string>
+    <string name="account_correo">Correo :</string>
+    <string name="account_skype">Skype :</string>
+    <string name="account_direccion">Dirección :</string>
+    <string name="account_edad">Edad</string>
+    <string name="account_telefono">Telefono :</string>
+    <string name="account_celular">Celular :</string>
+    <string name="account_genero">Genero :</string>
+    <string name="account_intereses">Intereses</string>
+    <string name="account_estado">Estado de la Cuenta</string>
 
 
 </resources>

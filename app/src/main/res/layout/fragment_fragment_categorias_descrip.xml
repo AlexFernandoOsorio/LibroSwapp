@@ -38,10 +38,18 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:layout_weight="7">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@color/colorcheckindigo">
+                    </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Titulo"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="20dp"
                         />
                     <TextView
                         android:id="@+id/libdes_titulo"
@@ -51,6 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Autor"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_autor"
@@ -60,6 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_isbn"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_isbn"
@@ -69,6 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Edicion"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_edicion"
@@ -78,6 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Editorial"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_editorial"
@@ -87,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Dispo"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_dispon"
@@ -96,6 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Desc"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_descr"
@@ -105,6 +119,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_txt_Ubica"
+                        android:textColor="@color/colorPrimaryDark"
                         />
                     <TextView
                         android:id="@+id/libdes_ubic"
@@ -113,6 +128,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
                         android:text="@string/libdes_txt_CopDue"
                         />
                     <TextView
@@ -122,6 +138,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark"
                         android:text="@string/libdes_txt_UserDue"
                         />
                     <TextView
@@ -136,29 +153,34 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="3">
 
                     <ImageView
-                        android:id="@+id/libimg_cardportada"
-                        android:layout_width="120dp"
-                        android:layout_height="150dp"
-                        android:scaleType="center"
-                        android:layout_gravity="center"/>
+                        android:id="@+id/libdes_imgportada"
+                        android:layout_width="100dp"
+                        android:layout_height="130dp"
+                        android:scaleType="fitXY"
+                        android:layout_gravity="left"/>
                     <Button
                         android:id="@+id/libdes_but_solicitar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:text="@string/libdes_but_Solicitar"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp"
+                        android:textColor="@color/colorwhite"
+                        android:textStyle="bold"
+                        android:theme="@style/MBA"/>
                     <Button
                         android:id="@+id/libdes_but_cancelar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/libdes_but_Cancelar"
-                        android:textSize="10sp"/>
+                        android:textSize="10sp"
+                        android:textColor="@color/colorwhite"
+                        android:textStyle="bold"
+                        android:theme="@style/MBE"/>
                 </LinearLayout>
 
             </LinearLayout>

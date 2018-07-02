@@ -622,6 +622,7 @@ public class FragmentHome extends BaseVolleyFragment {
                 params.put("estadoLibro",estadolibrols);
                 params.put("ubicacion",ubicacionls);
                 params.put("categoria",categorials);
+                params.put("disponibilidad",categorials);
 
                 return params;
             }
