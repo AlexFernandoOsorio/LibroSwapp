@@ -25,3 +25,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    $nombreCat= $_POST['nombreCat   '];
+
+    $retorno = Categorias::insert($nombreCat);
+
+    if ($retorno) {
+        // Código de éxito
+        print json_encode(
+            array(
+                'estado' => '1',
+                'mensaje' => 'Creación exitosa')
+        );
+    } else {
+        // Código de falla
+        print json_encode(
+            array(
+                'estado' => '2',
+                'mensaje' => 'Creación fallida')
+        );
+    }
+}

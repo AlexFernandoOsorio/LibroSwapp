@@ -120,7 +120,7 @@ class Usuarios
         }
     }
 
-    public static function getByID($correoUsuario)
+    public static function getBycodUser($codUsuario)
     {
         // Consulta de la meta
         $consulta = "SELECT us_idUsuario,
@@ -140,13 +140,13 @@ class Usuarios
                             us_genero,
                             us_intereses
                             FROM ls_Usuarios
-                            WHERE us_idUsuario= ?";
+                            WHERE us_codUsuario= ?";
 
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
             // Ejecutar sentencia preparada
-            $comando->execute(array($correoUsuario));
+            $comando->execute(array($codUsuario));
             // Capturar primera fila del resultado
             $row = $comando->fetch(PDO::FETCH_ASSOC);
             return $row;

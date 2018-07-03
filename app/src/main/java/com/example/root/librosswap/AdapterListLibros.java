@@ -148,19 +148,23 @@ public class AdapterListLibros extends RecyclerView.Adapter<AdapterListLibros.My
 
                             }
                             else {
-                                if (!TextUtils.isEmpty(lbsmls))
-                                {   if (lbsmls.length()<11||lbsmls.length()>13)
-                                {
-                                    lbsml.setError("El ISBN necesita tener 11 o 13 digitos");
-                                    focusView=lbsml;
-                                    focusView.requestFocus();
+                                if (!TextUtils.isEmpty(lbsmls)) {
+                                    if (lbsmls.length() < 11 || lbsmls.length() > 13) {
+                                        lbsml.setError("El ISBN necesita tener 11 o 13 digitos");
+                                        focusView = lbsml;
+                                        focusView.requestFocus();
+                                    } else {
+                                        uploadSelectedImageToServer();
+                                    }
                                 }
-                                else {
-                                    uploadSelectedImageToServer();
-                                }
-                                }
-                                else {
-                                    uploadSelectedImageToServer();
+                                if (!TextUtils.isEmpty(aniopublils)) {
+                                    if (aniopublils.length()!=4) {
+                                        lbsml.setError("El Año de Publicacion debe ser valido");
+                                        focusView = aniopublil;
+                                        focusView.requestFocus();
+                                    } else {
+                                        uploadSelectedImageToServer();
+                                    }
                                 }
                             }
                         }
@@ -206,7 +210,7 @@ public class AdapterListLibros extends RecyclerView.Adapter<AdapterListLibros.My
                     @Override
                     public void onResponse(String s) {
                         dialogsubida.dismiss();
-                        Toast.makeText(context, "Agregado Correctamente" , Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Modificado Correctamente" , Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {

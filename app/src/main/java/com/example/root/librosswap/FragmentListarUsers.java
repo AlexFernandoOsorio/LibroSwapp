@@ -69,7 +69,7 @@ public class FragmentListarUsers extends BaseVolleyFragment {
 
     public void ReceiveWSUsers()
     {
-        final String JsonURL = Constantes.GetUsuario;
+        final String JsonURL = Constantes.GetUsuarios;
         final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
                 new Response.Listener<JSONObject>() {
 

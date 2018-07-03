@@ -63,31 +63,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         }
         else{
-            if (isset($_GET['idUsuario'])) {
-       
-        // Obtener parámetro idMeta
-        $parametro = $_GET['codUsuario'];
-        // Tratar retorno
-        $retorno = Usuarios::getByID($parametro);
+                if (isset($_GET['codUsuario'])) {
+               
+                // Obtener parámetro idMeta
+                $parametro = $_GET['codUsuario'];
+                // Tratar retorno
+                $retorno = Usuarios::getBycodUser($parametro);
 
 
-        if ($retorno) {
+                if ($retorno) {
 
-            $datos["estado"] = "1";
-            $datos["usuarios"] = $retorno;
-            // Enviar objeto json de nlos datos
-            print json_encode($datos);
-        } else {
-            // Enviar respuesta de error general
-            print json_encode(
-                array(
-                    'estado' => '2',
-                    'mensaje' => 'No se obtuvo el registro'
-                )
-            );
-         }
+                    $datos["estado"] = "1";
+                    $datos["usuarios"] = $retorno;
+                    // Enviar objeto json de nlos datos
+                    print json_encode($datos);
+                } else {
+                    // Enviar respuesta de error general
+                    print json_encode(
+                        array(
+                            'estado' => '2',
+                            'mensaje' => 'No se obtuvo el registro'
+                        )
+                    );
+                 }
 
-        }
+                }
         }
     }
     

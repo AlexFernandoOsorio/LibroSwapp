@@ -66,6 +66,10 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
     TextView dispon;
     ImageView portada;
 
+    TextView coduser;
+    TextView nomuser;
+    TextView ubiuser;
+
     Button solicita;
     Button cancela;
     Dialog dialoghappy;
@@ -99,11 +103,9 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
         dispon=v.findViewById(R.id.libdes_dispon);
         portada=v.findViewById(R.id.libdes_imgportada);
 
-        TextView coduser=v.findViewById(R.id.libdes_coduser);
-        TextView nombreuser=v.findViewById(R.id.libdes_coduser);
-
-        coduser.setText("falta verificar");
-        coduser.setText("falta verificar");
+        coduser=v.findViewById(R.id.libdes_coduser);
+        nomuser=v.findViewById(R.id.libdes_nombreuser);
+        ubiuser=v.findViewById(R.id.libdes_ubicuser);
 
         solicita=v.findViewById(R.id.libdes_but_solicitar);
         solicita.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +167,6 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                                 categorian=jsonlibro.getString("li_categoriaLibro");
                                 disponn=jsonlibro.getString("li_disponibilidad");
                             }
-                            dialog.dismiss();
                             Toast.makeText(getContext(), titulon, Toast.LENGTH_SHORT).show();
                             isbn.setText(isbnn);
                             titulo.setText(titulon);
@@ -195,10 +196,54 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                                     } }
                             }
                             Glide.with(getContext()).load(portadan).into(portada);
+                            ReceiveWSCodigoUser(codusern);
                         }
                         catch (JSONException e) {
                             dialog.dismiss();
                             onConnectionFailed("Problemas con la conexión");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        dialog.dismiss();
+                        onConnectionFailed(error.toString());
+                    }
+                }
+        );
+        addToQueue(obreq);
+    }
+
+    public void ReceiveWSCodigoUser(String codigo)
+    {
+        final String JsonURL = Constantes.GetUsuarioID+"?codUsuario"+codigo;
+        final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
+                new Response.Listener<JSONObject>() {
+
+                    // Takes the response from the JSON request
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonarray = response.getJSONArray("usuario");
+                            UsersClass usuarios;
+                            //listusuarios.clear();
+                            for (int i = 0; i <= jsonarray.length(); i++) {
+                                JSONObject jsonObject = jsonarray.getJSONObject(i);
+                                String iduu=jsonObject.getString("us_idUsuario");
+                                String codu=jsonObject.getString("us_codUsuario");
+                                String nombreu=jsonObject.getString("us_nombres");
+                                String apellidosu=jsonObject.getString("us_apellidos");
+                                String direccu=jsonObject.getString("us_direccion");
+
+                                coduser.setText(codu);
+                                nomuser.setText(nombreu+' '+apellidosu);
+                                ubiuser.setText(direccu);
+                            }
+                            dialog.dismiss();
+                        }
+                        catch (JSONException e) {
+                            dialog.dismiss();
                         }
                     }
                 },

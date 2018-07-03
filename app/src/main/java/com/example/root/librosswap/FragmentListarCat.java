@@ -1,8 +1,10 @@
 package com.example.root.librosswap;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,18 +14,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -35,6 +43,9 @@ public class FragmentListarCat extends BaseVolleyFragment {
     RecyclerView recyclerView;
     AdapterCategorias catadapter;
     Dialog dialog;
+    Dialog dialogsubida;
+
+    AlertDialog Builder;
 
     public FragmentListarCat() {
         // Required empty public constructor
@@ -62,6 +73,20 @@ public class FragmentListarCat extends BaseVolleyFragment {
         recyclerView.setAdapter(catadapter);
         catadapter.notifyDataSetChanged();
         recyclerView.setNestedScrollingEnabled(false);
+        FloatingActionButton buttonfloat=v.findViewById(R.id.fab_addcategoria);
+        buttonfloat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                View promptView = getLayoutInflater().inflate(R.layout.dialog_agregacategoria, null);
+                Builder = new AlertDialog.Builder(getContext()).create();
+                final EditText categoria=promptView.findViewById(R.id.diall_addcategoria);
+                String cat =categoria.getText().toString();
+                InsertWSCat(cat);
+                Builder.setView(promptView);
+                Builder.show();
+
+            }
+        });
         return  v;
     }
 
@@ -102,6 +127,40 @@ public class FragmentListarCat extends BaseVolleyFragment {
                 }
         );
         addToQueue(obreq);
+    }
+
+    public void InsertWSCat(String categoria)
+    {
+        final String cat=categoria;
+        dialogsubida = new Dialog(getContext());
+        dialogsubida.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogsubida.setContentView(R.layout.dialog_loading);
+        dialogsubida.show();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.InsertLibros,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        dialogsubida.dismiss();
+                        Builder.dismiss();
+                        Toast.makeText(getContext(), "Agregado Correctamente" , Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        dialogsubida.dismiss();
+                        Builder.dismiss();
+                        Toast.makeText(getContext(), volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new Hashtable<String, String>();
+                params.put("nombreCat",cat);
+                return params;
+            }
+        };
+        addToQueue(stringRequest);
     }
 
 }

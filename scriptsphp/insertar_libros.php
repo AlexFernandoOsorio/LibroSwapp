@@ -5,22 +5,7 @@ require 'Libros.php';
  
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
- 	/*
- 							idLibros
-                            codUsuario
-                            idISBN
-                            titulo
-                            autor
-                            edicion
-                            anoPublicacio
-                            editorial
-                            portada
-                            descripcion
-                            estadoLibro
-                            ubicacion
-     */
+    
     $codUsuario= $_POST['codUsuario'];
     $idISBN= $_POST['idISBN'];
     $titulo= $_POST['titulo'];

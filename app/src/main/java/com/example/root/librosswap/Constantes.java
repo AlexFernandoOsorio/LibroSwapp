@@ -7,7 +7,7 @@ public class Constantes {
     static final String ServerPathImages="https://libroswapp.proyectosdetesis.com/AndroidImages/UploadAppImages";
 
     //Direcciones de lso servicios Rest para usuarios
-    public static final String GetUsuario = ServerPath+"obtener_usuarios.php";
+    public static final String GetUsuarios = ServerPath+"obtener_usuarios.php";
     public static final String GetUsuarioID = ServerPath+"obtener_usuarios_id.php";
     public static final String insertUsuario = ServerPath+"insertar_usuarios.php";
     public static final String updatetUsuario = ServerPath+"actualizar_usuarios.php";

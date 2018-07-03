@@ -71,6 +71,8 @@
     <string name="regdiagm_estadolibro">Estado del Libro</string>
     <string name="regdiagm_ubicacion">Nueva Ubicacion del Libro</string>
 
+    <!-- String para fragment de categorias-->
+    <string name="regdiag_categoria">Nueva Categoria para Libros</string>
 
     <!-- String para fragment de categorias-->
     <string name="cat1">Inteligencia artificial</string>
@@ -113,6 +115,7 @@
     <string name="libdes_txt_Editorial">Editorial del Libro</string>
     <string name="libdes_txt_CopDue">Codigo del Usuario Portante:</string>
     <string name="libdes_txt_UserDue">Usuario  :</string>
+    <string name="libdes_txt_UbicDue">Ubicacion del Usuario :</string>
 
     <string name="libdes_txt_EstadoUser">Estado :</string>
     <string name="libdes_txt_Correo">Correo :</string>
