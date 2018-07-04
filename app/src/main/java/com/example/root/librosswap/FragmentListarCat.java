@@ -10,10 +10,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -80,8 +82,28 @@ public class FragmentListarCat extends BaseVolleyFragment {
                 View promptView = getLayoutInflater().inflate(R.layout.dialog_agregacategoria, null);
                 Builder = new AlertDialog.Builder(getContext()).create();
                 final EditText categoria=promptView.findViewById(R.id.diall_addcategoria);
-                String cat =categoria.getText().toString();
-                InsertWSCat(cat);
+                final String cat =categoria.getText().toString();
+                final Button modif=promptView.findViewById(R.id.btn_dialogacatadd);
+                modif.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        View focusView = null;
+                        if (TextUtils.isEmpty(cat))
+                        {
+                            categoria.setError("Categoria vacia");
+                            focusView=categoria;
+                            focusView.requestFocus();
+                        }else
+                        {InsertWSCat(cat);}
+                    }
+                });
+                final Button cancel=promptView.findViewById(R.id.btn_dialogcatcancel);
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Builder.dismiss();
+                    }
+                });
                 Builder.setView(promptView);
                 Builder.show();
 
@@ -100,7 +122,7 @@ public class FragmentListarCat extends BaseVolleyFragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonarray = response.getJSONArray("categorias");
+                                JSONArray jsonarray = response.getJSONArray("categorias");
                             CategoClass libro;
                             listcategorias.clear();
                             for (int i = 0; i <= jsonarray.length(); i++) {
@@ -136,7 +158,7 @@ public class FragmentListarCat extends BaseVolleyFragment {
         dialogsubida.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogsubida.setContentView(R.layout.dialog_loading);
         dialogsubida.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.InsertLibros,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.GetCatall,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {

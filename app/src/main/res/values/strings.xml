@@ -94,6 +94,7 @@
     <string name="menu_categorias">Categorias</string>
     <string name="menu_listarlibros">Listar Libros</string>
     <string name="menu_actividad">Actividad</string>
+    <string name="menu_notificaciones">Solicitudes</string>
     <string name="menu_checkbox1">Activar</string>
     <string name="menu_checkbox2">Suspender</string>
     <string name="menu_checkbox3">Eliminar</string>
@@ -145,5 +146,7 @@
     <string name="account_intereses">Intereses</string>
     <string name="account_estado">Estado de la Cuenta</string>
 
-
+    <!-- Strings para items de solicitudes-->
+    <string name="text_solicite">Libros que Solicite</string>
+    <string name="text_solicitan">Libros que me Solicitan</string>
 </resources>

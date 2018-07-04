@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if ($Cat) {
 
         $datos["estado"] = 1;
-        $datos["usuario"] = $Cat;
+        $datos["categorias"] = $Cat;
 
         print json_encode($datos);
     } else {
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
-    $nombreCat= $_POST['nombreCat   '];
+    $nombreCat= $_POST['nombreCat'];
 
     $retorno = Categorias::insert($nombreCat);
 

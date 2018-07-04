@@ -69,6 +69,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_weight="10"
             android:orientation="horizontal">
             <LinearLayout
@@ -78,7 +79,7 @@
 
             </LinearLayout>
             <Button
-                android:id="@+id/btn_dialogacatadd"
+                android:id="@+id/btn_dialogcatcancel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -87,7 +88,7 @@
                 android:textStyle="bold"
                 android:background="@color/colorwhite"/>
             <Button
-                android:id="@+id/btn_dialogcatcancel"
+                android:id="@+id/btn_dialogacatadd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
