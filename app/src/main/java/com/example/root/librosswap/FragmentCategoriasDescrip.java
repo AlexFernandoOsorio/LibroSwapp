@@ -217,7 +217,7 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
 
     public void ReceiveWSCodigoUser(String codigo)
     {
-        final String JsonURL = Constantes.GetUsuarioID+"?codUsuario"+codigo;
+        final String JsonURL = Constantes.GetUsuarioID+"?codUsuario="+codigo;
         final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
                 new Response.Listener<JSONObject>() {
 
@@ -225,16 +225,14 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            JSONArray jsonarray = response.getJSONArray("usuario");
-                            UsersClass usuarios;
-                            //listusuarios.clear();
-                            for (int i = 0; i <= jsonarray.length(); i++) {
-                                JSONObject jsonObject = jsonarray.getJSONObject(i);
-                                String iduu=jsonObject.getString("us_idUsuario");
-                                String codu=jsonObject.getString("us_codUsuario");
-                                String nombreu=jsonObject.getString("us_nombres");
-                                String apellidosu=jsonObject.getString("us_apellidos");
-                                String direccu=jsonObject.getString("us_direccion");
+                            JSONObject jsonuser = response.getJSONObject("usuarios");
+
+                            for (int i = 0; i <= jsonuser.length(); i++) {
+                                String iduu=jsonuser.getString("us_idUsuario");
+                                String codu=jsonuser.getString("us_codUsuario");
+                                String nombreu=jsonuser.getString("us_nombres");
+                                String apellidosu=jsonuser.getString("us_apellidos");
+                                String direccu=jsonuser.getString("us_direccion");
 
                                 coduser.setText(codu);
                                 nomuser.setText(nombreu+' '+apellidosu);
@@ -243,6 +241,7 @@ public class FragmentCategoriasDescrip extends BaseVolleyFragment {
                             dialog.dismiss();
                         }
                         catch (JSONException e) {
+                            Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
                     }

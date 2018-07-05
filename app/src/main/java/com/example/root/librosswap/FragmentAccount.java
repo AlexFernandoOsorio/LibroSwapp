@@ -84,19 +84,34 @@ public class FragmentAccount extends BaseVolleyFragment {
         scorreo = user.get(SharedPrefUsuarios.KEY_EMAIL).toString();
         sskype = user.get(SharedPrefUsuarios.KEY_SKYPE).toString();
         sestado = user.get(SharedPrefUsuarios.KEY_ESTADO).toString();
+
+        switch (sestado){
+            case "1":
+                eestado.setText("Activo");
+                break;
+            case "0":
+                eestado.setText("Suspendido");
+                break;
+            case "-1":
+                eestado.setText("Eliminado");
+                break;
+        }
         stelefono = user.get(SharedPrefUsuarios.KEY_TEL).toString();
         scelular = user.get(SharedPrefUsuarios.KEY_CEL).toString();
         sgenero = user.get(SharedPrefUsuarios.KEY_GEN).toString();
+        if (sgenero.equals("M")){
+            egenero.setText("Masculino");
+        }else {
+            egenero.setText("Femenino");
+        }
         sinteres = user.get(SharedPrefUsuarios.KEY_INTERES).toString();
 
         enombreapell.setText(snombreapell);
         ecoduser.setText(scoduser);
         ecorreo.setText(scorreo);
         eskype.setText(sskype);
-        eestado.setText(sestado);
         etelefono.setText(stelefono);
-        ecelular.setText(scelular);
-        egenero.setText(sgenero);
+        ecelular.setText(scelular);;
         einteres.setText(sinteres);
 
         return v;

@@ -28,14 +28,28 @@
         app:layout_constraintTop_toBottomOf="@+id/cat" />
 
     <TextView
-        android:id="@+id/txt_idcat"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
+        android:layout_marginTop="8dp"
+        android:text="Identificador :"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_nombrecat" />
+
+    <TextView
+        android:id="@+id/txt_idcat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
 
 
     <Button
