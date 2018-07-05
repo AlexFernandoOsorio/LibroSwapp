@@ -66,7 +66,6 @@ public class AdapterListLibros extends RecyclerView.Adapter<AdapterListLibros.My
         }
     }
 
-
     public AdapterListLibros(List<LibrosClass> listaparameter) {
 
         this.listalibros = listaparameter;
@@ -89,7 +88,6 @@ public class AdapterListLibros extends RecyclerView.Adapter<AdapterListLibros.My
         holder.estado.setText(librotemporal.getEstadoLibr());
         idLibro=librotemporal.getIdLibros();
         Glide.with(holder.portada).load(librotemporal.getPortada()).into(holder.portada);
-
 
         holder.butmod.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,8 +185,6 @@ public class AdapterListLibros extends RecyclerView.Adapter<AdapterListLibros.My
 
             }
         });
-
-
     }
 
     @Override

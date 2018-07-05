@@ -1,4 +1,4 @@
-    <?php
+<?php
 /**
  * Obtiene el detalle de una meta especificada por
  * su identificador "idMeta"

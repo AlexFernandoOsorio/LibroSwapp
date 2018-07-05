@@ -149,4 +149,9 @@
     <!-- Strings para items de solicitudes-->
     <string name="text_solicite">Libros que Solicite</string>
     <string name="text_solicitan">Libros que me Solicitan</string>
+
+    <string name="text_idprestamo">Número de Peticion :</string>
+    <string name="text_nombrelibro">Nombre del Libro :</string>
+    <string name="text_fechaprestamo">Fecha de Solicitud</string>
+
 </resources>

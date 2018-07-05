@@ -24,9 +24,10 @@ public class Constantes {
 
 
     //Direcciones de lso servicios Rest para categorias
-    public static final String GetCatall = ServerPath+"obtener_categorias.php";
-
-
-
+    public static final String Get_Insert_Categorias = ServerPath+"get_insert_categorias.php";
+    public static final String Update_Delete_Categorias = ServerPath+"update_delete_categorias.php";
+    //Direcciones de lso servicios Rest para prestamos
+    public static final String Get_Insert_Prestamos = ServerPath+"get_insert_categorias.php";
+    public static final String Update_Delete_Prestamos = ServerPath+"update_delete_categorias.php";
 
 }

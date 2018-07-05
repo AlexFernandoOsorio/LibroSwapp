@@ -75,14 +75,14 @@ CREATE TABLE IF NOT EXISTS `ls_Categorias` (
 CREATE TABLE IF NOT EXISTS `ls_Prestamo` (
   `pr_idPrestamo` int(11) NOT NULL AUTO_INCREMENT,
   `pr_idLibro` int(11) NOT NULL,
-  `pr_idCodUsuarioSolicitante` varchar(11) NOT NULL,
-  `pr_idCodUsuarioSolicitado` varchar(11) NOT NULL,
+  `pr_idCodUsuarioSolicitante` int(11) NOT NULL,
+  `pr_idCodUsuarioSolicitado` int(11) NOT NULL,
   `pr_tipoPrestamo` int(10) NOT NULL,
 
   PRIMARY KEY (`pr_idPrestamo`),
   FOREIGN KEY (pr_idLibro) REFERENCES ls_Libros(li_idLibros), 
-  FOREIGN KEY (pr_idCodUsuarioSolicitante) REFERENCES ls_Usuarios(us_codUsuario),
-  FOREIGN KEY (pr_idCodUsuarioSolicitado) REFERENCES ls_Usuarios(us_codUsuario)
+  FOREIGN KEY (pr_idCodUsuarioSolicitante) REFERENCES ls_Usuarios(us_idUsuario),
+  FOREIGN KEY (pr_idCodUsuarioSolicitado) REFERENCES ls_Usuarios(us_idUsuario)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 //tipo de prestamo : 0 prestamo en solicitud 
 //1prestamo realizado  -1prestamo rechazado

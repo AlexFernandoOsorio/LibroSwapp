@@ -36,8 +36,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,10 +43,8 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Map;
 
 
@@ -215,8 +211,6 @@ public class FragmentHome extends BaseVolleyFragment {
                 ArrayAdapter<String> adaptadores = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arraytipo);
                 adaptadores.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerestado.setAdapter(adaptadores);
-
-                //Acciones de Botones
 
                 portadabutlil.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -504,9 +498,6 @@ public class FragmentHome extends BaseVolleyFragment {
     }
 
     private void showFileChooser() {
-        /*Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST);*/
-
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -544,7 +535,7 @@ public class FragmentHome extends BaseVolleyFragment {
 
     public void ReceiveWSCategoriaLibros()
     {
-        final String JsonURL = Constantes.GetCatall;
+        final String JsonURL = Constantes.Get_Insert_Categorias;
         final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
                 new Response.Listener<JSONObject>() {
 

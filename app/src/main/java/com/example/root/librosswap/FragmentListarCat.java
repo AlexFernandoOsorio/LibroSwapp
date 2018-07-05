@@ -114,7 +114,7 @@ public class FragmentListarCat extends BaseVolleyFragment {
 
     public void ReceiveWSCat()
     {
-        final String JsonURL = Constantes.GetCatall;
+        final String JsonURL = Constantes.Get_Insert_Categorias;
         final JsonObjectRequest obreq = new JsonObjectRequest(Request.Method.GET,JsonURL,null,
                 new Response.Listener<JSONObject>() {
 
@@ -158,7 +158,7 @@ public class FragmentListarCat extends BaseVolleyFragment {
         dialogsubida.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogsubida.setContentView(R.layout.dialog_loading);
         dialogsubida.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.GetCatall,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Constantes.Get_Insert_Categorias,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
